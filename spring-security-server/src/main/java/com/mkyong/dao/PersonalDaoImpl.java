@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mkyong.model.Personal;
+import com.mkyong.model.User;
+import com.mkyong.model.UserRole;
 
 @Repository
 public class PersonalDaoImpl implements PersonalDao {
@@ -28,6 +30,15 @@ public class PersonalDaoImpl implements PersonalDao {
 		} else {
 			return null;
 		}
+	}
+
+	public void addUser(User user) {
+		sessionFactory.getCurrentSession().saveOrUpdate(user);
+	}
+
+	public void addUserRole(UserRole userRole) {
+		sessionFactory.getCurrentSession().saveOrUpdate(userRole);
+		
 	}
 
 }
