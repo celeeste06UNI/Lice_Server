@@ -16,4 +16,6 @@ public interface PersonalDao {
 
 	public void addUserRole(UserRole userRole);
 
+	public void deletePersonal(String name);
+
 }

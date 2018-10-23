@@ -19,6 +19,8 @@ public interface PersonalService {
 	public void addUserRole(UserRole userRole);
 
 	public void enviarEmail(User user);
+	
+	public void deletePersonal(String name);
 
 
 }

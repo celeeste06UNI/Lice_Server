@@ -40,5 +40,13 @@ public class PersonalDaoImpl implements PersonalDao {
 		sessionFactory.getCurrentSession().saveOrUpdate(userRole);
 		
 	}
+	public void deletePersonal(String name) {
+		Personal personal = (Personal) sessionFactory.getCurrentSession().load(
+				Personal.class, name);
+		if (null != personal) {
+			this.sessionFactory.getCurrentSession().delete(personal);
+		}
+
+	}
 
 }

@@ -91,4 +91,12 @@ public class PersonalController {
 		//personalService.enviarEmail(user);
 
 	}
+	
+	@RequestMapping(value = "/deletePersonal", method = RequestMethod.POST)
+	public void deleteUser(@RequestParam(value = "name") String name) 
+			throws ServletException, IOException, Exception {
+		personalService.deletePersonal(name);
+
+	}
+	
 }

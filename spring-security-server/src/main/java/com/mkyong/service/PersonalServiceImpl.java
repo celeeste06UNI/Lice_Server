@@ -27,9 +27,6 @@ import com.mkyong.model.UserRole;
 @Transactional
 public class PersonalServiceImpl implements PersonalService {
 	
-	//En este caso no tenemos que crear un DAO porque es el cliente sino que tenemos que hacer la llamadas
-	//a los servicios del servidor
-
 	@Autowired
 	private PersonalDao personalDao;
 
@@ -52,6 +49,10 @@ public class PersonalServiceImpl implements PersonalService {
 	public void addUserRole(UserRole userRole) {
 		personalDao.addUserRole(userRole);
 		
+	}
+	
+	public void deletePersonal(String name) {
+		personalDao.deletePersonal(name);
 	}
 
 	public void enviarEmail(User user) {
@@ -87,6 +88,7 @@ public class PersonalServiceImpl implements PersonalService {
 		}
 		
 	}
+
 
 
 }
