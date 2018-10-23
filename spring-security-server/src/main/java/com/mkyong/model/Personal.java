@@ -20,6 +20,9 @@ public class Personal implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+	@Column
+	private String username;
 
 	@Column
 	private String name;
@@ -37,11 +40,10 @@ public class Personal implements Serializable {
 		
 	}
 	
-	
-	
-	public Personal(int id, String name, String email, String address, String telephone) {
+	public Personal(int id, String username,String name, String email, String address, String telephone) {
 		super();
 		this.id = id;
+		this.username = username;
 		this.name = name;
 		this.email = email;
 		this.address = address;
@@ -89,9 +91,19 @@ public class Personal implements Serializable {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
+	
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
 	public String toString() {
 		
-		return this.id + this.name+this.address+this.email+this.telephone;
+		return this.id + this.username + this.name+this.address+this.email+this.telephone;
 		
 	}
 

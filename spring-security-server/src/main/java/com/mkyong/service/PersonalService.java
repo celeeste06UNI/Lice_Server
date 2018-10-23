@@ -20,7 +20,11 @@ public interface PersonalService {
 
 	public void enviarEmail(User user);
 	
-	public void deletePersonal(String name);
+	public void deletePersonal(Integer id);
+
+	public void deleteUser(String username);
+
+	public void deleteUserRole(String username);
 
 
 }

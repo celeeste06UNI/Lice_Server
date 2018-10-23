@@ -51,8 +51,8 @@ public class PersonalServiceImpl implements PersonalService {
 		
 	}
 	
-	public void deletePersonal(String name) {
-		personalDao.deletePersonal(name);
+	public void deletePersonal(Integer id) {
+		personalDao.deletePersonal(id);
 	}
 
 	public void enviarEmail(User user) {
@@ -86,6 +86,15 @@ public class PersonalServiceImpl implements PersonalService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+	}
+
+	public void deleteUser(String username) {
+		personalDao.deleteUser(username);
+	}
+
+	public void deleteUserRole(String username) {
+		personalDao.deleteUserRole(username);
 		
 	}
 

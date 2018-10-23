@@ -46,10 +46,10 @@ public class PersonalController {
 	}
 
 	@RequestMapping(value = "/savePersonal", method = RequestMethod.POST)
-	public void savePersonal(@RequestParam(value = "id") int id, @RequestParam(value = "name") String name,
+	public void savePersonal(@RequestParam(value = "id") int id, @RequestParam(value = "username") String username,@RequestParam(value = "name") String name,
 			@RequestParam(value = "email") String email, @RequestParam(value = "address") String address,
 			@RequestParam(value = "telephone") String telephone) throws ServletException, IOException, Exception {
-		Personal personal = new Personal(id, name, email, address, telephone);
+		Personal personal = new Personal(id, username,name, email, address, telephone);
 		personalService.addPersonal(personal);
 
 	}
@@ -93,9 +93,23 @@ public class PersonalController {
 	}
 	
 	@RequestMapping(value = "/deletePersonal", method = RequestMethod.POST)
-	public void deleteUser(@RequestParam(value = "name") String name) 
+	public void deletePersonal(@RequestParam(value = "id") Integer id) 
 			throws ServletException, IOException, Exception {
-		personalService.deletePersonal(name);
+		personalService.deletePersonal(id);
+
+	}
+	
+	@RequestMapping(value = "/deleteUser", method = RequestMethod.POST)
+	public void deleteUser(@RequestParam(value = "username") String username) 
+			throws ServletException, IOException, Exception {
+		personalService.deleteUser(username);
+
+	}
+	
+	@RequestMapping(value = "/deleteUserRole", method = RequestMethod.POST)
+	public void deleteUserRole(@RequestParam(value = "username") String username) 
+			throws ServletException, IOException, Exception {
+		personalService.deleteUserRole(username);
 
 	}
 	
