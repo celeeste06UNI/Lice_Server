@@ -20,6 +20,8 @@ public interface PersonalDao {
 
 	public void deleteUser(String username);
 
-	public void deleteUserRole(String username);
+	public List<Personal> getPersonal(Integer id);
+
+	public void updatePersonal(Personal personal);
 
 }

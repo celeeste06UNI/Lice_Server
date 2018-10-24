@@ -53,11 +53,28 @@ public class PersonalController {
 		personalService.addPersonal(personal);
 
 	}
+	
+	@RequestMapping(value = "/updatePersonal", method = RequestMethod.POST)
+	public void updatePersonal(@RequestParam(value = "id") int id, @RequestParam(value = "username") String username,@RequestParam(value = "name") String name,
+			@RequestParam(value = "email") String email, @RequestParam(value = "address") String address,
+			@RequestParam(value = "telephone") String telephone) throws ServletException, IOException, Exception {
+		Personal personal = new Personal(id, username,name, email, address, telephone);
+		personalService.updatePersonal(personal);
+
+	}
 
 	@RequestMapping(value = "/getAllPersonal", method = RequestMethod.GET, produces = "application/json")
 	public List<Personal> getAllPersonal() {
 		List<Personal> list = new ArrayList<Personal>();
 		list = personalService.getAllPersonal();
+		return list;
+
+	}
+	
+	@RequestMapping(value = "/getPersonal", method = RequestMethod.GET, produces = "application/json")
+	public List<Personal> getPersonal(@RequestParam(value = "id") Integer id) {
+		List<Personal> list = new ArrayList<Personal>();
+		list = personalService.getPersonal(id);
 		return list;
 
 	}
@@ -106,11 +123,5 @@ public class PersonalController {
 
 	}
 	
-	@RequestMapping(value = "/deleteUserRole", method = RequestMethod.POST)
-	public void deleteUserRole(@RequestParam(value = "username") String username) 
-			throws ServletException, IOException, Exception {
-		personalService.deleteUserRole(username);
-
-	}
 	
 }

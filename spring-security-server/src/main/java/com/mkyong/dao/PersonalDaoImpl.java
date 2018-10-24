@@ -21,7 +21,9 @@ public class PersonalDaoImpl implements PersonalDao {
 
 	public void addPersonal(Personal personal) {
 		sessionFactory.getCurrentSession().saveOrUpdate(personal);
-
+	}
+	public void updatePersonal(Personal personal) {
+		sessionFactory.getCurrentSession().update(personal);
 	}
 
 	public List<Personal> getAllPersonal() {
@@ -32,6 +34,12 @@ public class PersonalDaoImpl implements PersonalDao {
 		} else {
 			return null;
 		}
+	}
+	
+	public List<Personal> getPersonal(Integer id) {
+		List<Personal> list = new ArrayList<Personal>();
+		list = sessionFactory.getCurrentSession().createQuery("from Personal where id="+id).list();
+		return list;
 	}
 
 	public void addUser(User user) {
@@ -60,24 +68,6 @@ public class PersonalDaoImpl implements PersonalDao {
 		
 	}
 
-	public void deleteUserRole(String username) {
-		User user = (User) sessionFactory.getCurrentSession().load(
-				User.class, username);
-		User u1 = new User(user.getUsername(),user.getPassword(), true);
-		
-		String queryString = "select ur.user_role_id from UserRole ur where user=" + u1;
-		Query query = sessionFactory.getCurrentSession().createQuery(queryString);
-		List<UserRole> UserRole = query.list();
-/*			for (UserRole ur : ) {
-				System.out.println(id);
-			}*/
-		
-		/*UserRole userRole = (UserRole) sessionFactory.getCurrentSession().load(
-				UserRole.class, (Serializable) user);
-		
-		if (null != userRole) {
-			this.sessionFactory.getCurrentSession().delete(userRole);
-		}*/
-	}
+
 
 }

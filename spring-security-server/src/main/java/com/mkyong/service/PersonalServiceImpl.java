@@ -34,11 +34,21 @@ public class PersonalServiceImpl implements PersonalService {
 	public void addPersonal(Personal personal) {
 		personalDao.addPersonal(personal);
 	}
+	public void updatePersonal(Personal personal) {
+		personalDao.updatePersonal(personal);
+	}
 	
 	@Transactional
 	public List<Personal> getAllPersonal(){
 		List<Personal> list= new ArrayList<Personal>();
 		list=personalDao.getAllPersonal();
+		return list;
+	}
+	
+	public List<Personal> getPersonal(Integer id) {
+		
+		List<Personal> list= new ArrayList<Personal>();
+		list=personalDao.getPersonal(id);
 		return list;
 	}
 
@@ -93,10 +103,6 @@ public class PersonalServiceImpl implements PersonalService {
 		personalDao.deleteUser(username);
 	}
 
-	public void deleteUserRole(String username) {
-		personalDao.deleteUserRole(username);
-		
-	}
 
 
 
