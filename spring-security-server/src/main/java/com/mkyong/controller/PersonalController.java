@@ -30,7 +30,6 @@ import com.mkyong.service.PersonalService;
 @RequestMapping(value = "/personal")
 public class PersonalController {
 
-	private static final Logger logger = Logger.getLogger(PersonalController.class);
 
 	public PersonalController() {
 		System.out.println("PersonalController()");
