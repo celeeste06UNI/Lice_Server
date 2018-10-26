@@ -39,6 +39,7 @@ public class Organization implements Serializable {
 
 	public Organization(int id, int cif, String name_org, String name_trade, String name_contact,
 			String role_contact, String telephone_contact) {
+		super();
 		this.id = id;
 		this.cif = cif;
 		this.name_org = name_org;
@@ -47,6 +48,10 @@ public class Organization implements Serializable {
 		this.role_contact = role_contact;
 		this.telephone_contact = telephone_contact;
 	}
+	
+	public Organization() {
+	}
+	
 
 	public int getId() {
 		return id;
