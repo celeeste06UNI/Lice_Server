@@ -1,19 +1,20 @@
 package com.mkyong.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
-import javax.mail.BodyPart;
+import javax.mail.Authenticator;
 import javax.mail.Message;
+import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-import javax.mail.internet.MimeMultipart;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -54,6 +55,7 @@ public class PersonalServiceImpl implements PersonalService {
 
 	public void addUser(User user) {
 		personalDao.addUser(user);
+		
 	}
 
 	public void addUserRole(UserRole userRole) {
@@ -65,45 +67,60 @@ public class PersonalServiceImpl implements PersonalService {
 		personalDao.deletePersonal(id);
 	}
 
-	public void enviarEmail(User user) {
-		try {
-			 JavaMailSender mailSender = null;
-
-			Properties props = new Properties();
-			props.put("mail.smtp.host", "smtp.gmail.com");
-			props.setProperty("mail.smtp.starttls.enable", "true");
-			props.setProperty("mail.smtp.port", "587");
-			props.setProperty("mail.smtp.user", "iplantooltfg@gmail.com");
-			props.setProperty("mail.smtp.auth", "true");
-
-			Session session = Session.getDefaultInstance(props, null);
-
-			// Se compone la parte del texto
-			BodyPart texto = new MimeBodyPart();
-			texto.setText("A continuación se adjuntan los distintos planes de mejora generados para su organización."
-					+ "\n" + "-" + "\n" + "Un saludo." + "\n");
-
-			MimeMultipart multiParte = new MimeMultipart();
-			multiParte.addBodyPart(texto);
-			MimeMessage message = new MimeMessage(session);
-			message.setFrom(new InternetAddress("celeste.lopez@alu.ulcm.es"));
-			message.addRecipient(Message.RecipientType.TO, new InternetAddress("celeste.lopez@alu.ulcm.es"));
-			message.setSubject("[LiceDQTool] Su contraseña de LiceDQTool");
-			message.setContent(multiParte);
-
-			mailSender.send(message);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
-
 	public void deleteUser(String username) {
 		personalDao.deleteUser(username);
 	}
 
+	public void sesionEmail(String emailDestino, String contraseña) {
+		final String fromEmail = "intime.uclm.esi@gmail.com"; // requires valid gmail id
+		final String password = "admin_1234"; // correct password for gmail id
+		final String toEmail = emailDestino; // can be any email id
 
+		System.out.println("TLSEmail Start");
+		Properties props = new Properties();
+		props.put("mail.smtp.host", "smtp.gmail.com"); // SMTP Host
+		props.put("mail.smtp.port", "587"); // TLS Port
+		props.put("mail.smtp.auth", "true"); // enable authentication
+		props.put("mail.smtp.starttls.enable", "true"); // enable STARTTLS
 
+		// create Authenticator object to pass in Session.getInstance argument
+		Authenticator auth = new Authenticator() {
+			// override the getPasswordAuthentication method
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(fromEmail, password);
+			}
+		};
+		Session session = Session.getInstance(props, auth);
+		
+		sendEmail(session, toEmail, "Contraseña app InTime", "Su contraseña es:" + contraseña);
+		
+	}
 
+	public void sendEmail(Session session, String toEmail, String subject, String body) {
+		try {
+			MimeMessage msg = new MimeMessage(session);
+			// set message headers
+			msg.addHeader("Content-type", "text/HTML; charset=UTF-8");
+			msg.addHeader("format", "flowed");
+			msg.addHeader("Content-Transfer-Encoding", "8bit");
+
+			msg.setFrom(new InternetAddress("no_reply@example.com", "NoReply-JD"));
+
+			msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
+
+			msg.setSubject(subject, "UTF-8");
+
+			msg.setText(body, "UTF-8");
+
+			msg.setSentDate(new Date());
+
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
+			System.out.println("Message is ready");
+			Transport.send(msg);
+
+			System.out.println("EMail Sent Successfully!!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }

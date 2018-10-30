@@ -2,6 +2,8 @@ package com.mkyong.service;
 
 import java.util.List;
 
+import javax.mail.Session;
+
 import com.mkyong.model.Personal;
 import com.mkyong.model.User;
 import com.mkyong.model.UserRole;
@@ -17,8 +19,6 @@ public interface PersonalService {
 	public void addUser(User user);
 
 	public void addUserRole(UserRole userRole);
-
-	public void enviarEmail(User user);
 	
 	public void deletePersonal(Integer id);
 
@@ -28,6 +28,9 @@ public interface PersonalService {
 
 	public void updatePersonal(Personal personal);
 
+	public void sendEmail(Session session, String toEmail, String subject, String body);
+	
+	public void sesionEmail(String emailDestino, String contraseña);
 
 
 }
