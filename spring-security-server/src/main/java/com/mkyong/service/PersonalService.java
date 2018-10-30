@@ -8,10 +8,8 @@ import com.mkyong.model.Personal;
 import com.mkyong.model.User;
 import com.mkyong.model.UserRole;
 
-
-
 public interface PersonalService {
-	
+
 	public void addPersonal(Personal personal);
 
 	public List<Personal> getAllPersonal();
@@ -19,7 +17,7 @@ public interface PersonalService {
 	public void addUser(User user);
 
 	public void addUserRole(UserRole userRole);
-	
+
 	public void deletePersonal(Integer id);
 
 	public void deleteUser(String username);
@@ -28,9 +26,8 @@ public interface PersonalService {
 
 	public void updatePersonal(Personal personal);
 
-	/*public void sendEmail(Session session, String toEmail, String subject, String body);
-	
-	public void sesionEmail(String emailDestino, String contraseña);*/
+	public void sendEmail(Session session, String toEmail, String subject, String body);
 
+	public void sesionEmail(String emailDestino, String contraseña);
 
 }

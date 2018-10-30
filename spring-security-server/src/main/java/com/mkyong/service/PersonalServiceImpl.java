@@ -13,7 +13,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,11 +22,10 @@ import com.mkyong.model.Personal;
 import com.mkyong.model.User;
 import com.mkyong.model.UserRole;
 
-
 @Service
 @Transactional
 public class PersonalServiceImpl implements PersonalService {
-	
+
 	@Autowired
 	private PersonalDao personalDao;
 
@@ -35,43 +33,39 @@ public class PersonalServiceImpl implements PersonalService {
 	public void addPersonal(Personal personal) {
 		personalDao.addPersonal(personal);
 	}
+
 	public void updatePersonal(Personal personal) {
 		personalDao.updatePersonal(personal);
 	}
-	
+
 	@Transactional
-	public List<Personal> getAllPersonal(){
-		List<Personal> list= new ArrayList<Personal>();
-		list=personalDao.getAllPersonal();
+	public List<Personal> getAllPersonal() {
+		List<Personal> list = new ArrayList<Personal>();
+		list = personalDao.getAllPersonal();
 		return list;
 	}
-	
+
 	public List<Personal> getPersonal(Integer id) {
-		
-		List<Personal> list= new ArrayList<Personal>();
-		list=personalDao.getPersonal(id);
+
+		List<Personal> list = new ArrayList<Personal>();
+		list = personalDao.getPersonal(id);
 		return list;
 	}
 
 	public void addUser(User user) {
 		personalDao.addUser(user);
-		
 	}
 
 	public void addUserRole(UserRole userRole) {
 		personalDao.addUserRole(userRole);
-		
+
 	}
-	
+
 	public void deletePersonal(Integer id) {
 		personalDao.deletePersonal(id);
 	}
 
-	public void deleteUser(String username) {
-		personalDao.deleteUser(username);
-	}
-
-	/*public void sesionEmail(String emailDestino, String contraseña) {
+	public void sesionEmail(String emailDestino, String contraseña) {
 		final String fromEmail = "intime.uclm.esi@gmail.com"; // requires valid gmail id
 		final String password = "admin_1234"; // correct password for gmail id
 		final String toEmail = emailDestino; // can be any email id
@@ -91,9 +85,9 @@ public class PersonalServiceImpl implements PersonalService {
 			}
 		};
 		Session session = Session.getInstance(props, auth);
-		
-		sendEmail(session, toEmail, "Contraseña app InTime", "Su contraseña es:" + contraseña);
-		
+
+		sendEmail(session, toEmail, "Contraseña LiceDQTool", "Su contraseña es:" + contraseña);
+
 	}
 
 	public void sendEmail(Session session, String toEmail, String subject, String body) {
@@ -104,9 +98,9 @@ public class PersonalServiceImpl implements PersonalService {
 			msg.addHeader("format", "flowed");
 			msg.addHeader("Content-Transfer-Encoding", "8bit");
 
-			msg.setFrom(new InternetAddress("no_reply@example.com", "NoReply-JD"));
+			msg.setFrom(new InternetAddress("no_reply@licedqtool.com", "NoReply-LiceDQTool"));
 
-			msg.setReplyTo(InternetAddress.parse("no_reply@example.com", false));
+			msg.setReplyTo(InternetAddress.parse("no_reply@licedqtool.com", false));
 
 			msg.setSubject(subject, "UTF-8");
 
@@ -122,5 +116,10 @@ public class PersonalServiceImpl implements PersonalService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}*/
+	}
+
+	public void deleteUser(String username) {
+		personalDao.deleteUser(username);
+	}
+
 }
