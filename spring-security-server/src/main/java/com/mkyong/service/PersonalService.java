@@ -28,9 +28,9 @@ public interface PersonalService {
 
 	public void updatePersonal(Personal personal);
 
-	public void sendEmail(Session session, String toEmail, String subject, String body);
+	/*public void sendEmail(Session session, String toEmail, String subject, String body);
 	
-	public void sesionEmail(String emailDestino, String contraseña);
+	public void sesionEmail(String emailDestino, String contraseña);*/
 
 
 }

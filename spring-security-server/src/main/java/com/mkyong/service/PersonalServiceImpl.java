@@ -71,7 +71,7 @@ public class PersonalServiceImpl implements PersonalService {
 		personalDao.deleteUser(username);
 	}
 
-	public void sesionEmail(String emailDestino, String contraseña) {
+	/*public void sesionEmail(String emailDestino, String contraseña) {
 		final String fromEmail = "intime.uclm.esi@gmail.com"; // requires valid gmail id
 		final String password = "admin_1234"; // correct password for gmail id
 		final String toEmail = emailDestino; // can be any email id
@@ -122,5 +122,5 @@ public class PersonalServiceImpl implements PersonalService {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
+	}*/
 }

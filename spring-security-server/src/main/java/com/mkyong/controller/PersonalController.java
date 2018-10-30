@@ -44,11 +44,10 @@ public class PersonalController {
 	@RequestMapping(value = "/savePersonal", method = RequestMethod.POST)
 	public void savePersonal(@RequestParam(value = "id") int id, @RequestParam(value = "username") String username,@RequestParam(value = "name") String name,
 			@RequestParam(value = "email") String email, @RequestParam(value = "address") String address,
-			@RequestParam(value = "telephone") String telephone,
-			@RequestParam(value = "passNoEncryp") String passNoEncryp) throws ServletException, IOException, Exception {
+			@RequestParam(value = "telephone") String telephone) throws ServletException, IOException, Exception {
 		Personal personal = new Personal(id, username,name, email, address, telephone);
 		personalService.addPersonal(personal);
-		personalService.sesionEmail(email, passNoEncryp);
+		//personalService.sesionEmail(email, passNoEncryp);
 
 	}
 	
