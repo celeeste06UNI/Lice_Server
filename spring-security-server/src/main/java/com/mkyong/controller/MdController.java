@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mkyong.model.DataModel;
 import com.mkyong.model.DataModelDecript;
 import com.mkyong.model.Personal;
 import com.mkyong.service.mdService;
@@ -31,12 +32,13 @@ public class MdController {
 	}
 	
 	@RequestMapping(value = "/getAllDatamodel", method = RequestMethod.GET)
-	public void getAllDatamodel(){
-		List<DataModelDecript> list = new ArrayList<DataModelDecript>();
+	public List<DataModel> getAllDatamodel(){
+		List<DataModel> list = new ArrayList<DataModel>();
 		list = mdService.getAllDatamodel();
 		for(int i = 0; i<list.size(); i++) {
 			System.out.println(list.get(i));
 		}
+		return list;
 	}
 	
 	@RequestMapping(value = "/getAllNameDatamodel", method = RequestMethod.GET)

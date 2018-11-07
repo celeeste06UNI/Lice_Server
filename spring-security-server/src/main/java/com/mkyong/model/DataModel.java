@@ -56,4 +56,10 @@ public class DataModel {
 	public void setVersion(String version) {
 		this.version = version;
 	}
+	
+	public String toString() {
+		
+		return this.database_name + this.id_datamodel + this.version;
+		
+	}
 }

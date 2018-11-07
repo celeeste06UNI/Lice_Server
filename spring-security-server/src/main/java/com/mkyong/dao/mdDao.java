@@ -12,7 +12,7 @@ public interface mdDao {
 	
 	public void addDataModel(DataModel dataModel);
 	
-	public List<DataModelDecript> getAllDatamodel();
+	public List<DataModel> getAllDatamodel();
 	
 	public List<String> getAllNameDatamodel();
 	

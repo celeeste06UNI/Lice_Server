@@ -61,8 +61,8 @@ public class mdDaoImpl implements mdDao {
 		}
 	}
 
-	public List<DataModelDecript> getAllDatamodel() {
-		List<DataModelDecript> datamodelList = new ArrayList<DataModelDecript>();
+	public List<DataModel> getAllDatamodel() {
+		List<DataModel> datamodelList = new ArrayList<DataModel>();
 		datamodelList = sessionFactory.getCurrentSession().createQuery("from DataModel").list();
 		if (datamodelList != null) {
 			return datamodelList;

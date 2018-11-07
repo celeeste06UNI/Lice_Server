@@ -52,8 +52,8 @@ public class mdServiceImpl implements mdService{
 	}
 	
 	@Transactional
-	public List<DataModelDecript> getAllDatamodel() {
-		List<DataModelDecript> list = new ArrayList<DataModelDecript>();
+	public List<DataModel> getAllDatamodel() {
+		List<DataModel> list = new ArrayList<DataModel>();
 		list = md.getAllDatamodel();
 		return list;
 	}
