@@ -13,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.mkyong.dao.OrganizationDao;
 import com.mkyong.model.DataModel;
+import com.mkyong.model.DataModelDecript;
+import com.mkyong.model.Personal;
 import com.mkyong.readerFile.readerMysql;
 import com.mkyong.dao.mdDao;
 
@@ -25,19 +27,42 @@ public class mdServiceImpl implements mdService{
 	private mdDao md;
 	
 	@Transactional
-	public void uploadFile(String path) {
-		ArrayList<DataModel> datamodelList = new ArrayList();
-		DataModel dataModel = new DataModel();
+	public void uploadFile(String path, String sistemabbdd, String version) {
+		String database_name;
+		int id_datamodel=0;
+		ArrayList<DataModelDecript> datamodelList = new ArrayList();
+		DataModelDecript descriptDataModel = new DataModelDecript();
 		String archivo_xml = path;
 		File fichero = new File(archivo_xml);
 		Document doc = r.abrirXmlJDOM(fichero);
-		datamodelList = r.recorrerJDOMyMostrar(doc);
-		for (int i=0; i < datamodelList.size();i++) {
-			dataModel = datamodelList.get(i);
-			//System.out.println(dataModel);
-			md.addDataModel(dataModel);
-		}
+		database_name = r.getDatabaseName(doc);
+		DataModel dataModel = new DataModel(id_datamodel,database_name, version);
+		md.addDataModel(dataModel);
+		List<Integer> ids = md.getIdDataModel(database_name, version);
+		int id = ids.get(0);
+		//System.out.println("-----------"+version+ id);
 		
+		//md.getIdDataModel(database_name,version);
+		
+		datamodelList = r.recorrerJDOMyMostrar(doc, version, id);
+		for (int i=0; i < datamodelList.size();i++) {
+			descriptDataModel = datamodelList.get(i);
+			md.addDecriptDataModel(descriptDataModel);
+		}
+	}
+	
+	@Transactional
+	public List<DataModelDecript> getAllDatamodel() {
+		List<DataModelDecript> list = new ArrayList<DataModelDecript>();
+		list = md.getAllDatamodel();
+		return list;
+	}
+	
+	@Transactional
+	public List<String> getAllNameDatamodel() {
+		List<String> list = new ArrayList<String>();
+		list = md.getAllNameDatamodel();
+		return list;
 	}
 	
 

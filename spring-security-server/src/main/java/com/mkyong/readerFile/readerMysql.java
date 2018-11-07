@@ -8,7 +8,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;
 
-import com.mkyong.model.DataModel;
+import com.mkyong.model.DataModelDecript;
 
 public class readerMysql{
 	
@@ -29,9 +29,9 @@ public class readerMysql{
     }
 		
 	
-	public ArrayList<DataModel> recorrerJDOMyMostrar(Document doc) {
-		ArrayList<DataModel> rowList = new ArrayList();
-		DataModel dataModel;
+	public ArrayList<DataModelDecript> recorrerJDOMyMostrar(Document doc, String version, int id) {
+		ArrayList<DataModelDecript> rowList = new ArrayList();
+		DataModelDecript dataModel;
 		try {
 			Element rootNode = doc.getRootElement();
 			List list = rootNode.getChildren( "ROW" );
@@ -44,8 +44,9 @@ public class readerMysql{
 				String column_type = row.getChildTextTrim("column_type");
 				String column_key = row.getChildTextTrim("column_key");
 				String isnullable = row.getChildTextTrim("is_nullable");
-				dataModel = new DataModel(database_name,table_name,table_type,column_name,
-						column_type,column_key,isnullable);
+				
+				dataModel = new DataModelDecript(database_name,table_name,table_type,column_name,
+						column_type,column_key,isnullable, version, id);
 				rowList.add(dataModel);
 			}            
 		} catch (Exception e) {
@@ -56,6 +57,22 @@ public class readerMysql{
 			System.out.println(prueba);
 		} */
 		return rowList;
+		
+	}
+	
+	public String getDatabaseName(Document doc) {
+		String database_name ="";
+		try {
+			Element rootNode = doc.getRootElement();
+			List list = rootNode.getChildren( "ROW" );
+			for (int i=0; i < list.size();i++) {
+				Element row = (Element) list.get(i);
+				database_name = row.getChildTextTrim("db_name");
+			}            
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return database_name;
 		
 	}
 
