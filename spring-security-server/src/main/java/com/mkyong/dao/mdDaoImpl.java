@@ -70,5 +70,27 @@ public class mdDaoImpl implements mdDao {
 			return null;
 		}
 	}
+	
+	public List<String> getdmdByIdDatamodel(Integer id_datamodel) {
+		List<String> datamodelDecriptList = new ArrayList<String>();
+		datamodelDecriptList = sessionFactory.getCurrentSession().createQuery("select distinct table_name from DataModelDecript "
+				+ "where id_datamodel="+id_datamodel).list();
+		if (datamodelDecriptList != null) {
+			return datamodelDecriptList;
+		} else {
+			return null;
+		}
+	}
+	
+	public List<String> getAttributesByTable(String table_name) {
+		List<String> datamodelDecriptList = new ArrayList<String>();
+		datamodelDecriptList = sessionFactory.getCurrentSession().createQuery("select column_name from DataModelDecript "
+				+ "where table_name='"+table_name+"'").list();
+		if (datamodelDecriptList != null) {
+			return datamodelDecriptList;
+		} else {
+			return null;
+		}
+	}
 
 }

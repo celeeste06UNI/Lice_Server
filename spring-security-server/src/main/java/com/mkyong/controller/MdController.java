@@ -35,9 +35,6 @@ public class MdController {
 	public List<DataModel> getAllDatamodel(){
 		List<DataModel> list = new ArrayList<DataModel>();
 		list = mdService.getAllDatamodel();
-		for(int i = 0; i<list.size(); i++) {
-			System.out.println(list.get(i));
-		}
 		return list;
 	}
 	
@@ -45,11 +42,24 @@ public class MdController {
 	public List<String> getAllNameDatamodel(){
 		List<String> list = new ArrayList<String>();
 		list = mdService.getAllNameDatamodel();
+		return list;
+	}
+	
+	@RequestMapping(value = "/getdmdByIdDatamodel", method = RequestMethod.GET)
+	public List<String> getdmdByIdDatamodel(@RequestParam(value = "id_datamodel") Integer id_datamodel){
+		List<String> list = new ArrayList<String>();
+		list = mdService.getdmdByIdDatamodel(id_datamodel);
+		return list;
+	}
+	
+	@RequestMapping(value = "/getAttributesByTable", method = RequestMethod.GET)
+	public List<String> getAttributesByTable(@RequestParam(value = "table_name") String table_name){
+		List<String> list = new ArrayList<String>();
+		list = mdService.getAttributesByTable(table_name);
 		for(int i = 0; i<list.size(); i++) {
 			System.out.println(list.get(i));
 		}
 		return list;
 	}
-	
 
 }

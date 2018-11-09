@@ -65,6 +65,18 @@ public class mdServiceImpl implements mdService{
 		return list;
 	}
 	
-
+	@Transactional
+	public List<String> getdmdByIdDatamodel(Integer id_datamodel) {
+		List<String> list = new ArrayList<String>();
+		list = md.getdmdByIdDatamodel(id_datamodel);
+		return list;
+	}
+	
+	@Transactional
+	public List<String> getAttributesByTable(String table_name) {
+		List<String> list = new ArrayList<String>();
+		list = md.getAttributesByTable(table_name);
+		return list;
+	}
 
 }

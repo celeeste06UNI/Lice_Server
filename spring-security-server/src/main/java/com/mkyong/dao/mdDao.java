@@ -19,5 +19,9 @@ public interface mdDao {
 	public List<String> getLastVersion(String database_name);
 	
 	public List<Integer> getIdDataModel(String database_name, String version);
+	
+	public List<String> getdmdByIdDatamodel(Integer id_datamodel);
+	
+	public List<String> getAttributesByTable(String table_name);
 
 }
