@@ -61,5 +61,13 @@ public class MdController {
 		}
 		return list;
 	}
+	
+	@RequestMapping(value = "/deleteDataModel", method = RequestMethod.GET)
+	public void deleteDataModel(@RequestParam(value = "database_name") String database_name,
+			@RequestParam("version") String version)
+			throws ServletException, IOException, Exception {
+		System.out.println(database_name + version);
+		mdService.deleteDataModel(database_name,version);
+	}
 
 }

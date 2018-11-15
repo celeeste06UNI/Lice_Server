@@ -79,4 +79,9 @@ public class mdServiceImpl implements mdService{
 		return list;
 	}
 
+	public void deleteDataModel(String database_name, String version) {
+		md.deleteDataModel(database_name,version);
+		
+	}
+
 }

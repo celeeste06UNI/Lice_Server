@@ -16,5 +16,7 @@ public interface mdService {
 	public List<String> getdmdByIdDatamodel(Integer id_datamodel);
 	
 	public List<String> getAttributesByTable(String table_name);
+	
+	public void deleteDataModel(String database_name, String version);
 
 }

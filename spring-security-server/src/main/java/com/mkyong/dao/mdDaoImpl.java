@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.mkyong.model.DataModel;
 import com.mkyong.model.DataModelDecript;
 import com.mkyong.model.Personal;
+import com.mkyong.model.User;
 
 @Repository
 public class mdDaoImpl implements mdDao {
@@ -91,6 +92,29 @@ public class mdDaoImpl implements mdDao {
 		} else {
 			return null;
 		}
+	}
+	
+	public List<DataModel> getDataModelByNameandVersion(String database_name, String version) {
+		List<DataModel> dataModel = new ArrayList<DataModel>();
+		dataModel = sessionFactory.getCurrentSession().createQuery("from DataModel "
+				+ "where database_name='"+database_name+"'" + "and version='"+ version +"'").list();
+		if (dataModel != null) {
+			return dataModel;
+		} else {
+			return null;
+		}
+	}
+
+	public void deleteDataModel(String database_name, String version) {
+		List<DataModel> dataModel = new ArrayList<DataModel>();
+		dataModel = getDataModelByNameandVersion(database_name,version);
+		if (null != dataModel) {
+			for(int i = 0; i<dataModel.size(); i++) {
+				this.sessionFactory.getCurrentSession().delete(dataModel.get(i));
+			}
+			
+		}
+		
 	}
 
 }

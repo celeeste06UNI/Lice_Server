@@ -24,4 +24,8 @@ public interface mdDao {
 	
 	public List<String> getAttributesByTable(String table_name);
 
+	public void deleteDataModel(String database_name, String version);
+	
+	public List<DataModel> getDataModelByNameandVersion(String database_name, String version);
+
 }
