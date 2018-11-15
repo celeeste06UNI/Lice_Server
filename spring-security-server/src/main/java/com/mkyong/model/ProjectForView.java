@@ -19,6 +19,14 @@ public class ProjectForView {
 		this.finish_date = finish_date;
 		this.rules = rules;
 	}
+	
+	
+
+	public ProjectForView() {
+
+	}
+
+
 
 	public String getName_emp() {
 		return name_emp;
