@@ -20,6 +20,9 @@ public class Project {
 	private int id;
 	
 	@Column
+	private String proj_name;
+	
+	@Column
 	private int id_emp;
 	
 	@Column
@@ -42,6 +45,20 @@ public class Project {
 		this.start_date = start_date;
 		this.finish_date = finish_date;
 	}
+	
+	public Project(int id, String proj_name, int id_emp, int id_org, int id_datamodel, Date start_date,
+			Date finish_date) {
+		super();
+		this.id = id;
+		this.proj_name = proj_name;
+		this.id_emp = id_emp;
+		this.id_org = id_org;
+		this.id_datamodel = id_datamodel;
+		this.start_date = start_date;
+		this.finish_date = finish_date;
+	}
+
+
 
 	public Project() {
 	}
@@ -53,6 +70,15 @@ public class Project {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public String getProj_name() {
+		return proj_name;
+	}
+
+	public void setProj_name(String proj_name) {
+		this.proj_name = proj_name;
+	}
+
 
 	public int getId_emp() {
 		return id_emp;

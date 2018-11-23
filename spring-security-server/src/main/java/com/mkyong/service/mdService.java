@@ -4,12 +4,15 @@ import java.util.List;
 
 import com.mkyong.model.DataModel;
 import com.mkyong.model.DataModelDecript;
+import com.mkyong.model.Organization;
 
 public interface mdService {
 	
 	public void uploadFile(String path, String sistemabbdd, String version);
 	
 	public List<DataModel> getAllDatamodel();
+	
+	public List<DataModel> getDataModel(Integer id_dm);
 	
 	public List<String> getAllNameDatamodel();
 	

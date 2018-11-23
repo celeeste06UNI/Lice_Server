@@ -11,6 +11,8 @@ public interface ProjectService {
 	
 	public List<ProjectForView> getOpenProjectForView();
 	
+	public List<Project> getOpenProject();
+	
 	public List<ProjectForView> getCloseProjectForView();
 
 }

@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mkyong.dao.OrganizationDao;
 import com.mkyong.model.DataModel;
 import com.mkyong.model.DataModelDecript;
+import com.mkyong.model.Organization;
 import com.mkyong.model.Personal;
 import com.mkyong.readerFile.readerMysql;
 import com.mkyong.dao.mdDao;
@@ -82,6 +83,12 @@ public class mdServiceImpl implements mdService{
 	public void deleteDataModel(String database_name, String version) {
 		md.deleteDataModel(database_name,version);
 		
+	}
+
+	public List<DataModel> getDataModel(Integer id_dm) {
+		List<DataModel> list= new ArrayList<DataModel>();
+		list=md.getDatamodel(id_dm);
+		return list;
 	}
 
 }

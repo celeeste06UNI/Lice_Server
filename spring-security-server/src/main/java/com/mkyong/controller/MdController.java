@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mkyong.model.DataModel;
 import com.mkyong.model.DataModelDecript;
+import com.mkyong.model.Organization;
 import com.mkyong.model.Personal;
 import com.mkyong.service.mdService;
 
@@ -68,6 +69,14 @@ public class MdController {
 			throws ServletException, IOException, Exception {
 		System.out.println(database_name + version);
 		mdService.deleteDataModel(database_name,version);
+	}
+	
+	@RequestMapping(value = "/getDataModel", method = RequestMethod.GET, produces = "application/json")
+	public List<DataModel> getDataModel(@RequestParam(value = "id_dm") Integer id_dm) {
+		List<DataModel> list = new ArrayList<DataModel>();
+		list = mdService.getDataModel(id_dm);
+		return list;
+
 	}
 
 }

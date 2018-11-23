@@ -27,10 +27,10 @@ public class ProjectController {
 	private ProjectService projectService;
 	
 	@RequestMapping(value = "/saveProject", method = RequestMethod.POST)
-	public void savePersonal(@RequestParam(value = "id") int id, @RequestParam(value = "id_emp") int id_emp,
+	public void savePersonal(@RequestParam(value = "id") int id, @RequestParam(value = "proj_name") String proj_name, @RequestParam(value = "id_emp") int id_emp,
 			@RequestParam(value = "id_org") int id_org, @RequestParam(value = "id_datamodel") int id_datamodel,
 			@RequestParam(value = "start_date") Date start_date, @RequestParam(value = "finish_date") Date finish_date) throws ServletException, IOException, Exception {
-		Project project = new Project(id, id_emp, id_org, id_datamodel, start_date, finish_date);
+		Project project = new Project(id, proj_name, id_emp, id_org, id_datamodel, start_date, finish_date);
 		projectService.addProject(project);
 	}
 	
@@ -40,6 +40,14 @@ public class ProjectController {
 		list = projectService.getOpenProjectForView();
 		return list;
 	}
+	
+	@RequestMapping(value = "/getOpenProject", method = RequestMethod.GET, produces = "application/json")
+	public List<Project> getOpenProject() {
+		List<Project> list = new ArrayList<Project>();
+		list = projectService.getOpenProject();
+		return list;
+	}
+	
 	
 	@RequestMapping(value = "/getCloseProjectForView", method = RequestMethod.GET, produces = "application/json")
 	public List<ProjectForView> getCloseProjectForView() {

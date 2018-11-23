@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mkyong.model.DataModel;
 import com.mkyong.model.DataModelDecript;
+import com.mkyong.model.Organization;
 
 
 public interface mdDao {
@@ -13,6 +14,8 @@ public interface mdDao {
 	public void addDataModel(DataModel dataModel);
 	
 	public List<DataModel> getAllDatamodel();
+	
+	public List<DataModel> getDatamodel(Integer id_dm);
 	
 	public List<String> getAllNameDatamodel();
 	

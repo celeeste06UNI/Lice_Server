@@ -63,6 +63,12 @@ public class ProjectServiceImpl implements ProjectService{
 		return listView;
 	}
 	
+	public List<Project> getOpenProject() {
+		List<Project> list = new ArrayList<Project>();
+		list = projectDao.getOpenProject();
+		return list;
+	}
+	
 	public List<ProjectForView> getCloseProjectForView() {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		List<Project> list = new ArrayList<Project>();

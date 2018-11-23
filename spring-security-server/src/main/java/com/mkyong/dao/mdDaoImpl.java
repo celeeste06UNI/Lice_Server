@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mkyong.model.DataModel;
 import com.mkyong.model.DataModelDecript;
+import com.mkyong.model.Organization;
 import com.mkyong.model.Personal;
 import com.mkyong.model.User;
 
@@ -126,6 +127,16 @@ public class mdDaoImpl implements mdDao {
 			
 		}
 		
+	}
+
+	public List<DataModel> getDatamodel(Integer id_dm) {
+		List<DataModel> listDataModel = new ArrayList<DataModel>();
+		listDataModel = sessionFactory.getCurrentSession().createQuery("from DataModel").list();
+		if (listDataModel != null) {
+			return listDataModel;
+		} else {
+			return null;
+		}
 	}
 
 }
