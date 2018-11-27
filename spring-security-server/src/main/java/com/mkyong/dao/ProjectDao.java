@@ -14,5 +14,7 @@ public interface ProjectDao {
 	public List<Project> getOpenProject();
 	
 	public List<Project> getCloseProject();
+	
+	public List<Project> getProject(int id);
 
 }

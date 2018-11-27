@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mkyong.model.Organization;
 import com.mkyong.model.Personal;
 import com.mkyong.model.Project;
 import com.mkyong.model.ProjectForView;
@@ -55,6 +56,15 @@ public class ProjectController {
 		list = projectService.getCloseProjectForView();
 		return list;
 	}
+	
+	@RequestMapping(value = "/getProject", method = RequestMethod.GET, produces = "application/json")
+	public List<Project> getProject(@RequestParam(value = "id") Integer id) {
+		List<Project> list = new ArrayList<Project>();
+		list = projectService.getProject(id);
+		return list;
+
+	}
+	
 	
 
 }

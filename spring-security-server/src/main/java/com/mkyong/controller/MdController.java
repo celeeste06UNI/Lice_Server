@@ -78,5 +78,12 @@ public class MdController {
 		return list;
 
 	}
+	
+	@RequestMapping(value = "/getDatamodelDescript", method = RequestMethod.GET)
+	public List<DataModelDecript> getDatamodelDescript(@RequestParam(value = "id_datamodel") Integer id_datamodel){
+		List<DataModelDecript> list = new ArrayList<DataModelDecript>();
+		list = mdService.getDatamodelDescript(id_datamodel);
+		return list;
+	}
 
 }

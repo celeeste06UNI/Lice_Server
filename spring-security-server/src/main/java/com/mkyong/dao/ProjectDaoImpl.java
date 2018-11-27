@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.mkyong.model.Organization;
 import com.mkyong.model.Personal;
 import com.mkyong.model.Project;
 import com.mkyong.model.ProjectForView;
@@ -59,6 +60,12 @@ public class ProjectDaoImpl implements ProjectDao{
 		} else {
 			return null;
 		}
+	}
+
+	public List<Project> getProject(int id) {
+		List<Project> list = new ArrayList<Project>();
+		list = sessionFactory.getCurrentSession().createQuery("from Project where id="+id).list();
+		return list;
 	}
 
 

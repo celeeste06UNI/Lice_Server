@@ -91,4 +91,10 @@ public class mdServiceImpl implements mdService{
 		return list;
 	}
 
+	public List<DataModelDecript> getDatamodelDescript(Integer id_datamodel) {
+		List<DataModelDecript> list= new ArrayList<DataModelDecript>();
+		list=md.getDatamodelDescript(id_datamodel);
+		return list;
+	}
+
 }

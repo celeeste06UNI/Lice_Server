@@ -33,6 +33,9 @@ public interface mdDao {
 	
 	public List<String> getNameDataModelById(Integer id_datamodel);
 	
+	public List<DataModelDecript> getDatamodelDescript(Integer id_datamodel);
+	
+	
 	
 
 }

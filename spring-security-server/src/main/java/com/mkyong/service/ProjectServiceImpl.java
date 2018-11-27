@@ -12,6 +12,7 @@ import com.mkyong.dao.OrganizationDao;
 import com.mkyong.dao.PersonalDao;
 import com.mkyong.dao.ProjectDao;
 import com.mkyong.dao.mdDao;
+import com.mkyong.model.Organization;
 import com.mkyong.model.Personal;
 import com.mkyong.model.Project;
 import com.mkyong.model.ProjectForView;
@@ -94,6 +95,12 @@ public class ProjectServiceImpl implements ProjectService{
 		}
 		
 		return listView;
+	}
+
+	public List<Project> getProject(int id) {
+		List<Project> list= new ArrayList<Project>();
+		list=projectDao.getProject(id);
+		return list;
 	}
 
 

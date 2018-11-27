@@ -139,4 +139,15 @@ public class mdDaoImpl implements mdDao {
 		}
 	}
 
+	public List<DataModelDecript> getDatamodelDescript(Integer id_datamodel) {
+		List<DataModelDecript> datamodelDecriptList = new ArrayList<DataModelDecript>();
+		datamodelDecriptList = sessionFactory.getCurrentSession().createQuery("from DataModelDecript "
+				+ "where id_datamodel="+id_datamodel).list();
+		if (datamodelDecriptList != null) {
+			return datamodelDecriptList;
+		} else {
+			return null;
+		}
+	}
+
 }
