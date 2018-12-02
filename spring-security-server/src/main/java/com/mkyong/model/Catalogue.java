@@ -1,5 +1,7 @@
 package com.mkyong.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,28 +11,28 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CATALOGUE_TBL", catalog = "test_apps")
-public class Catalogue {
+public class Catalogue implements Serializable{
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_catalogue;
 
-	@Column
+
+	@Column(name = "name", unique = true)
 	private String name;
 
 	@Column
 	private String description;
 
 	public Catalogue(int id_catalogue, String name, String description) {
-		super();
 		this.id_catalogue = id_catalogue;
 		this.name = name;
 		this.description = description;
 	}
 
 	public Catalogue() {
-
 	}
 
 	public int getId_catalogue() {
