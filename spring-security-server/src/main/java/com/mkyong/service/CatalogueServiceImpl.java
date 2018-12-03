@@ -30,5 +30,20 @@ public class CatalogueServiceImpl implements CatalogueService{
 		list=catalogueDao.getAllCatalogue();
 		return list;
 	}
+	@Transactional
+	public void deleteCatalogue(Integer id_catalogue) {
+		catalogueDao.deleteCatalogue(id_catalogue);
+		
+	}
+	@Transactional
+	public List<Catalogue> getCatalogue(Integer id_catalogue) {
+		List<Catalogue> list= new ArrayList<Catalogue>();
+		list=catalogueDao.getCatalogue(id_catalogue);
+		return list;
+	}
+	public void updateCatalogue(Catalogue catalogue) {
+		catalogueDao.updateCatalogue(catalogue);
+		
+	}
 
 }

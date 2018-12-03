@@ -31,4 +31,25 @@ public class CatalogueDaoImpl implements CatalogueDao {
 		}
 
 	}
+
+	public void deleteCatalogue(Integer id_catalogue) {
+		Catalogue catalogue = (Catalogue) sessionFactory.getCurrentSession().load(
+				Catalogue.class, id_catalogue);
+		if (null != catalogue) {
+			this.sessionFactory.getCurrentSession().delete(catalogue);
+		}
+		
+	}
+
+	public List<Catalogue> getCatalogue(Integer id_catalogue) {
+		List<Catalogue> list = new ArrayList<Catalogue>();
+		list = sessionFactory.getCurrentSession().createQuery("from Catalogue where id_catalogue="+id_catalogue).list();
+		return list;
+	}
+
+	public void updateCatalogue(Catalogue catalogue) {
+		System.out.println("-------------"+catalogue.getId_catalogue());
+		sessionFactory.getCurrentSession().update(catalogue);
+		
+	}
 }
