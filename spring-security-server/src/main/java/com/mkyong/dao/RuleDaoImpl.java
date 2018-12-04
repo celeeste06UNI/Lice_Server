@@ -1,4 +1,4 @@
-package com.mkyong.service;
+package com.mkyong.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.mkyong.dao.RuleDao;
 import com.mkyong.model.Attribute;
 import com.mkyong.model.Organization;
 import com.mkyong.model.Rule;
@@ -27,7 +26,7 @@ public class RuleDaoImpl implements RuleDao{
 
 	public List<Rule> getLastRule() {
 		List<Rule> listRule = new ArrayList<Rule>();
-		listRule = sessionFactory.getCurrentSession().createQuery("from Rule").list();
+		listRule = sessionFactory.getCurrentSession().createQuery("from Rule order by id_rule ASC").list();
 		if (listRule != null) {
 			return listRule;
 		} else {
