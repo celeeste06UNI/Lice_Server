@@ -13,10 +13,14 @@ public interface RuleDao {
 	
 	public List<Rule> getLastRule();
 	
+	public List<Rule> getAllRule();
+	
 	public void addRuleProj(RuleProj ruleProj);
 	
 	public void addAttribute(Attribute attribute);
 	
 	public void addRuleProjCatalogue(RuleProjCatalogue ruleProjCatalogue);
+	
+	public List<Attribute> getAttributesByRule(int id_rule);
 
 }

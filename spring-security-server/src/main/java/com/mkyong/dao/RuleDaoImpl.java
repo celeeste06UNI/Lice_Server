@@ -26,7 +26,17 @@ public class RuleDaoImpl implements RuleDao{
 
 	public List<Rule> getLastRule() {
 		List<Rule> listRule = new ArrayList<Rule>();
-		listRule = sessionFactory.getCurrentSession().createQuery("from Rule order by id_rule ASC").list();
+		listRule = sessionFactory.getCurrentSession().createQuery("from Rule order by id_rule DESC").list();
+		if (listRule != null) {
+			return listRule;
+		} else {
+			return null;
+		}
+	}
+	
+	public List<Rule> getAllRule() {
+		List<Rule> listRule = new ArrayList<Rule>();
+		listRule = sessionFactory.getCurrentSession().createQuery("from Rule").list();
 		if (listRule != null) {
 			return listRule;
 		} else {
@@ -47,6 +57,12 @@ public class RuleDaoImpl implements RuleDao{
 	public void addRuleProjCatalogue(RuleProjCatalogue ruleProjCatalogue) {
 		sessionFactory.getCurrentSession().saveOrUpdate(ruleProjCatalogue);
 		
+	}
+
+	public List<Attribute> getAttributesByRule(int id_rule) {
+		List<Attribute> list = new ArrayList<Attribute>();
+		list = sessionFactory.getCurrentSession().createQuery("from Attribute where id_rule="+id_rule).list();
+		return list;
 	}
 
 }

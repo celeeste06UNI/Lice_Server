@@ -18,6 +18,9 @@ public class Rule implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id_rule;
+	
+	@Column
+	private String operator;
 
 	@Column
 	private String property;
@@ -34,10 +37,11 @@ public class Rule implements Serializable{
 	@Column
 	private String version;
 
-	public Rule(int id_rule, String property, String state, String criticity, String priority,
+	public Rule(int id_rule, String operator, String property, String state, String criticity, String priority,
 			String version) {
 		super();
 		this.id_rule = id_rule;
+		this.operator = operator;
 		this.property = property;
 		this.state = state;
 		this.criticity = criticity;
@@ -55,6 +59,15 @@ public class Rule implements Serializable{
 	public void setId_rule(int id_rule) {
 		this.id_rule = id_rule;
 	}
+	
+	public String getOperator() {
+		return operator;
+	}
+
+	public void setOperator(String operator) {
+		this.operator = operator;
+	}
+
 
 	public String getProperty() {
 		return property;
@@ -97,7 +110,7 @@ public class Rule implements Serializable{
 	}
 	
 	public String toString() {
-		return this.id_rule +" "+ this.state + this.property + this.criticity + this.priority 
+		return this.id_rule +" "+this.operator +" "+ this.state + this.property + this.criticity + this.priority 
 		+ this.version;
 		
 	}

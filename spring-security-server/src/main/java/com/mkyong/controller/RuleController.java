@@ -1,6 +1,8 @@
 package com.mkyong.controller;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,16 +23,23 @@ import com.mkyong.model.Attribute;
 @RestController
 @RequestMapping(value = "/rule")
 public class RuleController {
-	
+
 	@Autowired
 	private RuleService ruleService;
-
 	@RequestMapping(value = "/addRule", method = RequestMethod.POST)
-	public void addRule(@RequestParam(value = "id_rule") int id_rule, @RequestParam(value = "property") String property,
-			@RequestParam(value = "state") String state, @RequestParam(value = "criticity") String criticity,
-			@RequestParam(value = "priority") String priority, @RequestParam(value = "version") String version)
-			throws ServletException, IOException, Exception {
-		Rule rule = new Rule(id_rule, property, state, criticity, priority, version);
+	public void addRule(@RequestParam(value = "id_rule") int id_rule, @RequestParam(value = "operator") String operator,
+			@RequestParam(value = "property") String property, @RequestParam(value = "state") String state,
+			@RequestParam(value = "criticity") String criticity, @RequestParam(value = "priority") String priority,
+			@RequestParam(value = "version") String version) throws ServletException, IOException, Exception {
+		
+		String operator1 = URLDecoder.decode(operator);
+		String property1 = URLDecoder.decode(property);
+		String state1 = URLDecoder.decode(state);
+		String criticity1 = URLDecoder.decode(criticity);
+		String priority1 = URLDecoder.decode(priority);
+		String version1 = URLDecoder.decode(version);
+		
+		Rule rule = new Rule(id_rule, operator1, property1, state1, criticity1, priority1, version1);
 		ruleService.addRule(rule);
 	}
 
@@ -47,8 +56,15 @@ public class RuleController {
 			@RequestParam(value = "term") String term, @RequestParam(value = "verb") String verb,
 			@RequestParam(value = "logical_operator") String logical_operator,
 			@RequestParam(value = "term_value") String term_value) throws ServletException, IOException, Exception {
-		Attribute attribute = new Attribute(id_attribute, id_rule, modal_operator, term, verb, logical_operator,
-				term_value);
+		
+		String modal_operator1 = URLDecoder.decode(modal_operator);
+		String term1 = URLDecoder.decode(term);
+		String verb1 = URLDecoder.decode(verb);
+		String logical_operator1 = URLDecoder.decode(logical_operator);
+		String term_value1 = URLDecoder.decode(term_value);
+		
+		Attribute attribute = new Attribute(id_attribute, id_rule, modal_operator1, term1, verb1, logical_operator1,
+				term_value1);
 		ruleService.addAttribute(attribute);
 	}
 
@@ -59,11 +75,27 @@ public class RuleController {
 		RuleProjCatalogue ruleProjectCatalogue = new RuleProjCatalogue(id_rule, id_project, id_catalogue);
 		ruleService.addRuleProjCatalogue(ruleProjectCatalogue);
 	}
-	
+
 	@RequestMapping(value = "/getLastRule", method = RequestMethod.GET, produces = "application/json")
 	public List<Rule> getLastRule() {
 		List<Rule> list = new ArrayList<Rule>();
 		list = ruleService.getLastRule();
+		return list;
+
+	}
+	
+	@RequestMapping(value = "/getAllRule", method = RequestMethod.GET, produces = "application/json")
+	public List<Rule> getAllRule() {
+		List<Rule> list = new ArrayList<Rule>();
+		list = ruleService.getAllRule();
+		return list;
+
+	}
+	
+	@RequestMapping(value = "/getAttributesByRule", method = RequestMethod.GET, produces = "application/json")
+	public List<Attribute> getAttributesByRule(int id_rule) {
+		List<Attribute> list = new ArrayList<Attribute>();
+		list = ruleService.getAttributesByRule(id_rule);
 		return list;
 
 	}

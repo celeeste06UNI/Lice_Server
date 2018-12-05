@@ -13,6 +13,10 @@ public interface RuleService {
 	
 	public List<Rule> getLastRule();
 	
+	public List<Rule> getAllRule();
+	
+	public List<Attribute> getAttributesByRule(int id_rule);
+	
 	public void addRuleProj(RuleProj ruleProj);
 	
 	public void addAttribute(Attribute attribute);
