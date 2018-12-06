@@ -19,6 +19,7 @@ import com.mkyong.model.RuleProj;
 import com.mkyong.model.RuleProjCatalogue;
 import com.mkyong.service.RuleService;
 import com.mkyong.model.Attribute;
+import com.mkyong.model.Organization;
 
 @RestController
 @RequestMapping(value = "/rule")
@@ -26,19 +27,20 @@ public class RuleController {
 
 	@Autowired
 	private RuleService ruleService;
+
 	@RequestMapping(value = "/addRule", method = RequestMethod.POST)
 	public void addRule(@RequestParam(value = "id_rule") int id_rule, @RequestParam(value = "operator") String operator,
 			@RequestParam(value = "property") String property, @RequestParam(value = "state") String state,
 			@RequestParam(value = "criticity") String criticity, @RequestParam(value = "priority") String priority,
 			@RequestParam(value = "version") String version) throws ServletException, IOException, Exception {
-		
+
 		String operator1 = URLDecoder.decode(operator);
 		String property1 = URLDecoder.decode(property);
 		String state1 = URLDecoder.decode(state);
 		String criticity1 = URLDecoder.decode(criticity);
 		String priority1 = URLDecoder.decode(priority);
 		String version1 = URLDecoder.decode(version);
-		
+
 		Rule rule = new Rule(id_rule, operator1, property1, state1, criticity1, priority1, version1);
 		ruleService.addRule(rule);
 	}
@@ -56,13 +58,13 @@ public class RuleController {
 			@RequestParam(value = "term") String term, @RequestParam(value = "verb") String verb,
 			@RequestParam(value = "logical_operator") String logical_operator,
 			@RequestParam(value = "term_value") String term_value) throws ServletException, IOException, Exception {
-		
+
 		String modal_operator1 = URLDecoder.decode(modal_operator);
 		String term1 = URLDecoder.decode(term);
 		String verb1 = URLDecoder.decode(verb);
 		String logical_operator1 = URLDecoder.decode(logical_operator);
 		String term_value1 = URLDecoder.decode(term_value);
-		
+
 		Attribute attribute = new Attribute(id_attribute, id_rule, modal_operator1, term1, verb1, logical_operator1,
 				term_value1);
 		ruleService.addAttribute(attribute);
@@ -83,7 +85,7 @@ public class RuleController {
 		return list;
 
 	}
-	
+
 	@RequestMapping(value = "/getAllRule", method = RequestMethod.GET, produces = "application/json")
 	public List<Rule> getAllRule() {
 		List<Rule> list = new ArrayList<Rule>();
@@ -91,12 +93,42 @@ public class RuleController {
 		return list;
 
 	}
-	
+
 	@RequestMapping(value = "/getAttributesByRule", method = RequestMethod.GET, produces = "application/json")
 	public List<Attribute> getAttributesByRule(int id_rule) {
 		List<Attribute> list = new ArrayList<Attribute>();
 		list = ruleService.getAttributesByRule(id_rule);
 		return list;
+
+	}
+
+	@RequestMapping(value = "/deleteRule", method = RequestMethod.POST)
+	public void deleteRule(@RequestParam(value = "id_rule") int id_rule)
+			throws ServletException, IOException, Exception {
+		ruleService.deleteRule(id_rule);
+
+	}
+
+	@RequestMapping(value = "/updateRule", method = RequestMethod.POST)
+	public void updateRule(@RequestParam(value = "id_rule") int id_rule,
+			@RequestParam(value = "operator") String operator, @RequestParam(value = "property") String property,
+			@RequestParam(value = "state") String state, @RequestParam(value = "criticity") String criticity,
+			@RequestParam(value = "priority") String priority, @RequestParam(value = "version") String version,
+			@RequestParam(value = "id_catalogue") int id_catalogue) throws ServletException, IOException, Exception {
+		
+		String operator1 = URLDecoder.decode(operator);
+		String property1 = URLDecoder.decode(property);
+		String state1 = URLDecoder.decode(state);
+		String criticity1 = URLDecoder.decode(criticity);
+		String priority1 = URLDecoder.decode(priority);
+		String version1 = URLDecoder.decode(version);
+		
+		Rule rule = new Rule(id_rule,operator,property,state,criticity,priority,version);
+		RuleProjCatalogue rpc = ruleService.getRuleProjCatalogue(id_rule);
+		RuleProjCatalogue newRpc = new RuleProjCatalogue(id_rule, rpc.getId_project(), id_catalogue);
+		
+		ruleService.updateRule(rule);
+		ruleService.updateRuleProjCatalogue(newRpc);
 
 	}
 

@@ -131,7 +131,7 @@ public class mdDaoImpl implements mdDao {
 
 	public List<DataModel> getDatamodel(Integer id_dm) {
 		List<DataModel> listDataModel = new ArrayList<DataModel>();
-		listDataModel = sessionFactory.getCurrentSession().createQuery("from DataModel").list();
+		listDataModel = sessionFactory.getCurrentSession().createQuery("from DataModel where id_dm=" +id_dm).list();
 		if (listDataModel != null) {
 			return listDataModel;
 		} else {

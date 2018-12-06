@@ -65,4 +65,29 @@ public class RuleDaoImpl implements RuleDao{
 		return list;
 	}
 
+	public void deleteRule(int id_rule) {
+		Rule rule = (Rule) sessionFactory.getCurrentSession().load(
+				Rule.class, id_rule);
+		if (null != rule) {
+			this.sessionFactory.getCurrentSession().delete(rule);
+		}
+		
+	}
+
+	public void updateRule(Rule rule) {
+		sessionFactory.getCurrentSession().update(rule);
+		
+	}
+
+	public void updateRuleProjCatalogue(RuleProjCatalogue ruleProjCatalogue) {
+		sessionFactory.getCurrentSession().update(ruleProjCatalogue);
+		
+	}
+
+	public List<RuleProjCatalogue> getRuleProjCatalogue(int id_rule) {
+		List<RuleProjCatalogue> list = new ArrayList<RuleProjCatalogue>();
+		list = sessionFactory.getCurrentSession().createQuery("from RuleProjCatalogue where id_rule="+id_rule).list();
+		return list;
+	}
+
 }

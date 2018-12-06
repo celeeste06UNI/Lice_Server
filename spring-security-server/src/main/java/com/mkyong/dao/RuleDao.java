@@ -22,5 +22,13 @@ public interface RuleDao {
 	public void addRuleProjCatalogue(RuleProjCatalogue ruleProjCatalogue);
 	
 	public List<Attribute> getAttributesByRule(int id_rule);
+	
+	public void deleteRule(int id_rule);
+	
+	public void updateRule(Rule rule);
+	
+	public void updateRuleProjCatalogue(RuleProjCatalogue ruleProjCatalogue);
+	
+	public List<RuleProjCatalogue> getRuleProjCatalogue(int id_rule);
 
 }

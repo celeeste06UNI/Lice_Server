@@ -15,6 +15,10 @@ public interface RuleService {
 	
 	public List<Rule> getAllRule();
 	
+	public void deleteRule(int id_rule);
+	
+	public void updateRule(Rule rule);
+	
 	public List<Attribute> getAttributesByRule(int id_rule);
 	
 	public void addRuleProj(RuleProj ruleProj);
@@ -22,5 +26,10 @@ public interface RuleService {
 	public void addAttribute(Attribute attribute);
 	
 	public void addRuleProjCatalogue(RuleProjCatalogue ruleProjCatalogue);
+	
+	public RuleProjCatalogue getRuleProjCatalogue(int id_rule);
+	
+	public void updateRuleProjCatalogue(RuleProjCatalogue ruleProjCatalogue);
 
+	
 }
