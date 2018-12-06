@@ -80,5 +80,17 @@ public class RuleServiceImpl implements RuleService{
 		ruleDao.updateRuleProjCatalogue(ruleProjCatalogue);
 		
 	}
+	
+	@Transactional
+	public List<RuleProj> getRulesByProject(int id_project) {
+		List<RuleProj> listRule = new ArrayList<RuleProj>();
+		listRule = ruleDao.getRulesByProject(id_project);
+		return listRule;
+	}
+	public List<Rule> getRule(int id_rule) {
+		List<Rule> listRule = new ArrayList<Rule>();
+		listRule = ruleDao.getRule(id_rule);
+		return listRule;
+	}
 
 }

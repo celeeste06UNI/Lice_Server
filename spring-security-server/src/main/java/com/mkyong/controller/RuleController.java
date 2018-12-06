@@ -86,13 +86,7 @@ public class RuleController {
 
 	}
 
-	@RequestMapping(value = "/getAllRule", method = RequestMethod.GET, produces = "application/json")
-	public List<Rule> getAllRule() {
-		List<Rule> list = new ArrayList<Rule>();
-		list = ruleService.getAllRule();
-		return list;
 
-	}
 
 	@RequestMapping(value = "/getAttributesByRule", method = RequestMethod.GET, produces = "application/json")
 	public List<Attribute> getAttributesByRule(int id_rule) {
@@ -129,6 +123,30 @@ public class RuleController {
 		
 		ruleService.updateRule(rule);
 		ruleService.updateRuleProjCatalogue(newRpc);
+
+	}
+	
+	@RequestMapping(value = "/getRulesByProject", method = RequestMethod.GET, produces = "application/json")
+	public List<RuleProj> getRulesByProject(@RequestParam(value = "id_project") int id_project) {
+		List<RuleProj> list = new ArrayList<RuleProj>();
+		list = ruleService.getRulesByProject(id_project);
+		return list;
+
+	}
+	
+	@RequestMapping(value = "/getRule", method = RequestMethod.GET, produces = "application/json")
+	public List<Rule> getRule(@RequestParam(value = "id_rule") int id_rule) {
+		List<Rule> list = new ArrayList<Rule>();
+		list = ruleService.getRule(id_rule);
+		return list;
+
+	}
+	
+	@RequestMapping(value = "/getAllRule", method = RequestMethod.GET, produces = "application/json")
+	public List<Rule> getAllRule() {
+		List<Rule> list = new ArrayList<Rule>();
+		list = ruleService.getAllRule();
+		return list;
 
 	}
 

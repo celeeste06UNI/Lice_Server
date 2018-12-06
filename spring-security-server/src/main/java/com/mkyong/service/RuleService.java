@@ -15,6 +15,10 @@ public interface RuleService {
 	
 	public List<Rule> getAllRule();
 	
+	public List<Rule> getRule(int id_rule);
+	
+	public List<RuleProj> getRulesByProject(int id_project);
+	
 	public void deleteRule(int id_rule);
 	
 	public void updateRule(Rule rule);

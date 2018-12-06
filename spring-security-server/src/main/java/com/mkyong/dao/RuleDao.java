@@ -15,6 +15,10 @@ public interface RuleDao {
 	
 	public List<Rule> getAllRule();
 	
+	public List<Rule> getRule(int id_rule);
+	
+	public List<RuleProj> getRulesByProject(int id_project);
+	
 	public void addRuleProj(RuleProj ruleProj);
 	
 	public void addAttribute(Attribute attribute);
