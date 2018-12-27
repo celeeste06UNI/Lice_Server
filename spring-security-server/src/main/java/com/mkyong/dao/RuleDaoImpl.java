@@ -101,7 +101,7 @@ public class RuleDaoImpl implements RuleDao {
 
 	public List<Rule> getRule(int id_rule) {
 		List<Rule> listRule = new ArrayList<Rule>();
-		listRule = sessionFactory.getCurrentSession().createQuery("from Rule").list();
+		listRule = sessionFactory.getCurrentSession().createQuery("from Rule where id_rule="+id_rule).list();
 		if (listRule != null) {
 			return listRule;
 		} else {
