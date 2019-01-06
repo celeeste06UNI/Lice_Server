@@ -23,5 +23,7 @@ public interface mdService {
 	public void deleteDataModel(String database_name, String version);
 	
 	public List<DataModelDecript> getDatamodelDescript(Integer id_datamodel);
+	
+	public List<String> getNameTableDescript(Integer id_datamodel);
 
 }

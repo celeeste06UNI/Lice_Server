@@ -35,6 +35,8 @@ public interface mdDao {
 	
 	public List<DataModelDecript> getDatamodelDescript(Integer id_datamodel);
 	
+	public List<String> getNameTableDescript(Integer id_datamodel);
+	
 	
 	
 

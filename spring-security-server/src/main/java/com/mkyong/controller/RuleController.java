@@ -40,9 +40,16 @@ public class RuleController {
 		String criticity1 = URLDecoder.decode(criticity);
 		String priority1 = URLDecoder.decode(priority);
 		String version1 = URLDecoder.decode(version);
+		
+		
+		System.out.println("????????????Operador"+operator1);
+		System.out.println("????????????"+property1);
 
-		Rule rule = new Rule(id_rule, operator1, property1, state1, criticity1, priority1, version1);
+		
+		Rule rule = new Rule(id_rule, operator1, property1, state1, criticity1,
+		priority1, version1); 
 		ruleService.addRule(rule);
+		
 	}
 
 	@RequestMapping(value = "/addRuleProj", method = RequestMethod.POST)
