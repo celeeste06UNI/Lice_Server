@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mkyong.model.Catalogue;
 import com.mkyong.model.Organization;
+import com.mkyong.model.RuleProjCatalogue;
 
 @Repository
 public class CatalogueDaoImpl implements CatalogueDao {
@@ -50,6 +51,13 @@ public class CatalogueDaoImpl implements CatalogueDao {
 	public void updateCatalogue(Catalogue catalogue) {
 		System.out.println("-------------"+catalogue.getId_catalogue());
 		sessionFactory.getCurrentSession().update(catalogue);
+		
+	}
+	
+	public List<RuleProjCatalogue> getRuleProjCatalogue(Integer id_catalogue){
+		List<RuleProjCatalogue> list = new ArrayList<RuleProjCatalogue>();
+		list = sessionFactory.getCurrentSession().createQuery("from RuleProjCatalogue where id_catalogue="+id_catalogue).list();
+		return list;
 		
 	}
 }

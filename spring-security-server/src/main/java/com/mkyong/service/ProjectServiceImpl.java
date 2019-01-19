@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mkyong.dao.OrganizationDao;
 import com.mkyong.dao.PersonalDao;
 import com.mkyong.dao.ProjectDao;
+import com.mkyong.dao.RuleDao;
 import com.mkyong.dao.mdDao;
 import com.mkyong.model.Organization;
 import com.mkyong.model.Personal;
@@ -31,6 +32,9 @@ public class ProjectServiceImpl implements ProjectService{
 	
 	@Autowired
 	private mdDao md;
+	
+	@Autowired
+	private RuleDao ruleDao;
 
 	public void addProject(Project project) {
 		projectDao.addProject(project);
@@ -57,6 +61,7 @@ public class ProjectServiceImpl implements ProjectService{
 			name_datamodel = md.getNameDataModelById(project.getId_datamodel()).get(0);
 			start_date = sdf.format(project.getStart_date());
 			finish_date = sdf.format(project.getFinish_date());
+			rules = ruleDao.getRulesByProject(project.getId()).size();
 			projectForView = new ProjectForView(name_emp,name_org,name_datamodel,start_date,finish_date,rules);
 			listView.add(projectForView);
 		}
@@ -90,6 +95,7 @@ public class ProjectServiceImpl implements ProjectService{
 			name_datamodel = md.getNameDataModelById(project.getId_datamodel()).get(0);
 			start_date = sdf.format(project.getStart_date());
 			finish_date = sdf.format(project.getFinish_date());
+			rules = ruleDao.getRulesByProject(project.getId()).size();
 			projectForView = new ProjectForView(name_emp,name_org,name_datamodel,start_date,finish_date,rules);
 			listView.add(projectForView);
 		}

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mkyong.dao.CatalogueDao;
 import com.mkyong.model.Catalogue;
 import com.mkyong.model.Organization;
+import com.mkyong.model.RuleProjCatalogue;
 
 @Service
 @Transactional
@@ -41,9 +42,16 @@ public class CatalogueServiceImpl implements CatalogueService{
 		list=catalogueDao.getCatalogue(id_catalogue);
 		return list;
 	}
+	
 	public void updateCatalogue(Catalogue catalogue) {
 		catalogueDao.updateCatalogue(catalogue);
 		
+	}
+	
+	public List<RuleProjCatalogue> getRuleProjCatalogue(Integer id_catalogue){
+		List<RuleProjCatalogue> list= new ArrayList<RuleProjCatalogue>();
+		list = catalogueDao.getRuleProjCatalogue(id_catalogue);
+		return list;
 	}
 
 }

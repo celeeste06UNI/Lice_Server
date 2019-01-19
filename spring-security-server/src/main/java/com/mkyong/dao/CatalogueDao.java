@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mkyong.model.Catalogue;
 import com.mkyong.model.Organization;
+import com.mkyong.model.RuleProjCatalogue;
 
 public interface CatalogueDao {
 	
@@ -16,5 +17,7 @@ public interface CatalogueDao {
 	public List<Catalogue> getCatalogue(Integer id_catalogue);
 	
 	public void updateCatalogue(Catalogue catalogue);
+	
+	public List<RuleProjCatalogue> getRuleProjCatalogue(Integer id_catalogue);
 
 }
