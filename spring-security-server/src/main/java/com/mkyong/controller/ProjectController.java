@@ -17,6 +17,7 @@ import com.mkyong.model.Organization;
 import com.mkyong.model.Personal;
 import com.mkyong.model.Project;
 import com.mkyong.model.ProjectForView;
+import com.mkyong.model.RuleProj;
 import com.mkyong.service.ProjectService;
 
 
@@ -65,6 +66,13 @@ public class ProjectController {
 
 	}
 	
+	@RequestMapping(value = "/getProjectByRule", method = RequestMethod.GET, produces = "application/json")
+	public List<RuleProj> getProjectByRule(@RequestParam(value = "id_rule") Integer id_rule) {
+		List<RuleProj> list = new ArrayList<RuleProj>();
+		list = projectService.getProjectByRule(id_rule);
+		return list;
+
+	}
 	
 
 }

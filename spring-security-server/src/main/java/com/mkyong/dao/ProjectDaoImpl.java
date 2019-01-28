@@ -14,6 +14,7 @@ import com.mkyong.model.Organization;
 import com.mkyong.model.Personal;
 import com.mkyong.model.Project;
 import com.mkyong.model.ProjectForView;
+import com.mkyong.model.RuleProj;
 
 @Repository
 public class ProjectDaoImpl implements ProjectDao{
@@ -65,6 +66,12 @@ public class ProjectDaoImpl implements ProjectDao{
 	public List<Project> getProject(int id) {
 		List<Project> list = new ArrayList<Project>();
 		list = sessionFactory.getCurrentSession().createQuery("from Project where id="+id).list();
+		return list;
+	}
+
+	public List<RuleProj> getProjectByRule(Integer id_rule) {
+		List<RuleProj> list = new ArrayList<RuleProj>();
+		list = sessionFactory.getCurrentSession().createQuery("from RuleProj where id="+id_rule).list();
 		return list;
 	}
 

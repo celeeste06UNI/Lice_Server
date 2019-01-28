@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mkyong.model.Project;
 import com.mkyong.model.ProjectForView;
+import com.mkyong.model.RuleProj;
 
 public interface ProjectService {
 	
@@ -16,4 +17,6 @@ public interface ProjectService {
 	public List<ProjectForView> getCloseProjectForView();
 
 	public List<Project> getProject(int id);
+
+	public List<RuleProj> getProjectByRule(Integer id_rule);
 }

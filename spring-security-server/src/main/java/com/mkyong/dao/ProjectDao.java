@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mkyong.model.Project;
 import com.mkyong.model.ProjectForView;
+import com.mkyong.model.RuleProj;
 
 public interface ProjectDao {
 	
@@ -16,5 +17,7 @@ public interface ProjectDao {
 	public List<Project> getCloseProject();
 	
 	public List<Project> getProject(int id);
+
+	public List<RuleProj> getProjectByRule(Integer id_rule);
 
 }

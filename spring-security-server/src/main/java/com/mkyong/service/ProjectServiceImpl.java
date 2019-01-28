@@ -17,6 +17,7 @@ import com.mkyong.model.Organization;
 import com.mkyong.model.Personal;
 import com.mkyong.model.Project;
 import com.mkyong.model.ProjectForView;
+import com.mkyong.model.RuleProj;
 @Service
 @Transactional
 public class ProjectServiceImpl implements ProjectService{
@@ -106,6 +107,12 @@ public class ProjectServiceImpl implements ProjectService{
 	public List<Project> getProject(int id) {
 		List<Project> list= new ArrayList<Project>();
 		list=projectDao.getProject(id);
+		return list;
+	}
+
+	public List<RuleProj> getProjectByRule(Integer id_rule) {
+		List<RuleProj> list= new ArrayList<RuleProj>();
+		list=projectDao.getProjectByRule(id_rule);
 		return list;
 	}
 
