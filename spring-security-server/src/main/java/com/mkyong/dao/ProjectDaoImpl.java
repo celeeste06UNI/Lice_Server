@@ -71,7 +71,7 @@ public class ProjectDaoImpl implements ProjectDao{
 
 	public List<RuleProj> getProjectByRule(Integer id_rule) {
 		List<RuleProj> list = new ArrayList<RuleProj>();
-		list = sessionFactory.getCurrentSession().createQuery("from RuleProj where id="+id_rule).list();
+		list = sessionFactory.getCurrentSession().createQuery("from RuleProj where id_rule="+id_rule).list();
 		return list;
 	}
 

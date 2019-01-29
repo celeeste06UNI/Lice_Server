@@ -42,10 +42,6 @@ public class RuleController {
 		String version1 = URLDecoder.decode(version);
 		
 		
-		System.out.println("????????????Operador"+operator1);
-		System.out.println("????????????"+property1);
-
-		
 		Rule rule = new Rule(id_rule, operator1, property1, state1, criticity1,
 		priority1, version1); 
 		ruleService.addRule(rule);
@@ -112,6 +108,7 @@ public class RuleController {
 
 	@RequestMapping(value = "/updateRule", method = RequestMethod.POST)
 	public void updateRule(@RequestParam(value = "id_rule") int id_rule,
+			@RequestParam(value = "id_project") int id_project,
 			@RequestParam(value = "operator") String operator, @RequestParam(value = "property") String property,
 			@RequestParam(value = "state") String state, @RequestParam(value = "criticity") String criticity,
 			@RequestParam(value = "priority") String priority, @RequestParam(value = "version") String version,
@@ -125,8 +122,7 @@ public class RuleController {
 		String version1 = URLDecoder.decode(version);
 		
 		Rule rule = new Rule(id_rule,operator,property,state,criticity,priority,version);
-		RuleProjCatalogue rpc = ruleService.getRuleProjCatalogue(id_rule);
-		RuleProjCatalogue newRpc = new RuleProjCatalogue(id_rule, rpc.getId_project(), id_catalogue);
+		RuleProjCatalogue newRpc = new RuleProjCatalogue(id_rule, id_project, id_catalogue);
 		
 		ruleService.updateRule(rule);
 		ruleService.updateRuleProjCatalogue(newRpc);

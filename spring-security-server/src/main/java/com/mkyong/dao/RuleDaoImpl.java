@@ -80,7 +80,7 @@ public class RuleDaoImpl implements RuleDao {
 	}
 
 	public void updateRuleProjCatalogue(RuleProjCatalogue ruleProjCatalogue) {
-		sessionFactory.getCurrentSession().update(ruleProjCatalogue);
+		sessionFactory.getCurrentSession().saveOrUpdate(ruleProjCatalogue);
 
 	}
 

@@ -62,16 +62,24 @@ public class CatalogueController {
 	public void updateCatalogue(@RequestParam(value = "id_catalogue") int id_catalogue,
 			@RequestParam(value = "name") String name, @RequestParam(value = "description") String description)
 			throws ServletException, IOException, Exception {
-		System.out.println("_________"+id_catalogue);
-		Catalogue catalogue = new Catalogue(id_catalogue,name,description);
+		Catalogue catalogue = new Catalogue(id_catalogue, name, description);
 		catalogueService.updateCatalogue(catalogue);
 
 	}
-	
+
 	@RequestMapping(value = "/getRuleProjCatalogue", method = RequestMethod.GET, produces = "application/json")
 	public List<RuleProjCatalogue> RuleProjCatalogue(@RequestParam(value = "id_catalogue") Integer id_catalogue) {
 		List<RuleProjCatalogue> list = new ArrayList<RuleProjCatalogue>();
 		list = catalogueService.getRuleProjCatalogue(id_catalogue);
+		return list;
+
+	}
+
+	@RequestMapping(value = "/getListRuleProjCatalogue", method = RequestMethod.GET, produces = "application/json")
+	public List<RuleProjCatalogue> getListRuleProjCatalogue(@RequestParam(value = "id_rule") Integer id_rule,
+			@RequestParam(value = "id_project") Integer id_project) {
+		List<RuleProjCatalogue> list = new ArrayList<RuleProjCatalogue>();
+		list = catalogueService.getListRuleProjCatalogue(id_rule, id_project);
 		return list;
 
 	}

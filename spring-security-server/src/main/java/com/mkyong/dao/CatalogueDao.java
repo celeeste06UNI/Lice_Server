@@ -20,4 +20,6 @@ public interface CatalogueDao {
 	
 	public List<RuleProjCatalogue> getRuleProjCatalogue(Integer id_catalogue);
 
+	public List<RuleProjCatalogue> getListRuleProjCatalogue(Integer id_rule, Integer id_project);
+
 }

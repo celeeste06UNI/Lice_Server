@@ -60,4 +60,10 @@ public class CatalogueDaoImpl implements CatalogueDao {
 		return list;
 		
 	}
+
+	public List<RuleProjCatalogue> getListRuleProjCatalogue(Integer id_rule, Integer id_project) {
+		List<RuleProjCatalogue> list = new ArrayList<RuleProjCatalogue>();
+		list = sessionFactory.getCurrentSession().createQuery("from RuleProjCatalogue where id_rule='"+id_rule + "' and id_project='" + id_project + "'").list();
+		return list;
+	}
 }
