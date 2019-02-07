@@ -58,5 +58,10 @@ public class CatalogueServiceImpl implements CatalogueService{
 		list = catalogueDao.getListRuleProjCatalogue(id_rule,id_project);
 		return list;
 	}
+	public List<Catalogue> getCatalogues(Integer id_rule, Integer id_project) {
+		List<Catalogue> list= new ArrayList<Catalogue>();
+		list=catalogueDao.getCatalogues(id_rule, id_project);
+		return list;
+	}
 
 }

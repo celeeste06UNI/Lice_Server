@@ -83,5 +83,14 @@ public class CatalogueController {
 		return list;
 
 	}
+	
+	@RequestMapping(value = "/getCatalogues", method = RequestMethod.GET, produces = "application/json")
+	public List<Catalogue> getCatalogues(@RequestParam(value = "id_rule") Integer id_rule,
+			@RequestParam(value = "id_project") Integer id_project) {
+		List<Catalogue> list = new ArrayList<Catalogue>();
+		list = catalogueService.getCatalogues(id_rule, id_project);
+		return list;
+
+	}
 
 }

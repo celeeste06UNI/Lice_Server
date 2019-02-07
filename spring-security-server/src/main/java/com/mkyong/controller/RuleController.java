@@ -122,11 +122,17 @@ public class RuleController {
 		String version1 = URLDecoder.decode(version);
 		
 		Rule rule = new Rule(id_rule,operator,property,state,criticity,priority,version);
-		RuleProjCatalogue newRpc = new RuleProjCatalogue(id_rule, id_project, id_catalogue);
-		
 		ruleService.updateRule(rule);
-		ruleService.updateRuleProjCatalogue(newRpc);
-
+		
+		
+		
+		if(id_catalogue==0) {
+			System.out.println("¿Quieres realmente eliminar la regla de todos los catalogos a los que esta asignada?");
+			//ruleService.deleteRuleProjCatalogue(id_rule, id_project, id_catalogueOld);
+		}else {
+			RuleProjCatalogue newRpc = new RuleProjCatalogue(id_rule, id_project, id_catalogue);
+			ruleService.updateRuleProjCatalogue(newRpc);
+		}
 	}
 	
 	@RequestMapping(value = "/getRulesByProject", method = RequestMethod.GET, produces = "application/json")

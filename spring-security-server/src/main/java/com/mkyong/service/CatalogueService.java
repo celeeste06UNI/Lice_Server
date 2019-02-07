@@ -21,4 +21,6 @@ public interface CatalogueService {
 	public List<RuleProjCatalogue> getRuleProjCatalogue(Integer id_catalogue);
 
 	public List<RuleProjCatalogue> getListRuleProjCatalogue(Integer id_rule, Integer id_project);
+
+	public List<Catalogue> getCatalogues(Integer id_rule, Integer id_project);
 }

@@ -66,4 +66,19 @@ public class CatalogueDaoImpl implements CatalogueDao {
 		list = sessionFactory.getCurrentSession().createQuery("from RuleProjCatalogue where id_rule='"+id_rule + "' and id_project='" + id_project + "'").list();
 		return list;
 	}
+
+	public List<Catalogue> getCatalogues(Integer id_rule, Integer id_project) {
+		List<Catalogue> listFinal = new ArrayList<Catalogue>();
+		List<RuleProjCatalogue> list = new ArrayList<RuleProjCatalogue>();
+		list = sessionFactory.getCurrentSession().createQuery("from RuleProjCatalogue where id_rule='"+id_rule + "' and id_project='" + id_project + "'").list();
+		for (int i= 0; i<list.size(); i++) {
+			Integer id_catalogue = list.get(i).getId_catalogue();
+			List<Catalogue> aux = new ArrayList<Catalogue>();
+			aux = sessionFactory.getCurrentSession().createQuery("from Catalogue where id_catalogue="+id_catalogue).list();
+			Catalogue catalogue = aux.get(0);
+			listFinal.add(catalogue);
+			
+		}
+		return listFinal;
+	}
 }
