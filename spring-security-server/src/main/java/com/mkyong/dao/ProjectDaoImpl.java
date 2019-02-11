@@ -75,5 +75,39 @@ public class ProjectDaoImpl implements ProjectDao{
 		return list;
 	}
 
+	public List<Project> getOpenProjectUser(String username) {
+		List<Personal> list = new ArrayList<Personal>();
+		list = sessionFactory.getCurrentSession().createQuery("from Personal where username='"+username+"'").list();
+		int id_user = list.get(0).getId();
+		
+		java.util.Date date = new Date();
+		java.sql.Date sqlStartDate = new java.sql.Date(date.getTime()); 
+		List<Project> listProject = new ArrayList<Project>();
+		listProject = sessionFactory.getCurrentSession().createQuery("from Project where finish_date>='" +
+				sqlStartDate + "' and id_emp='" + id_user + "'").list();
+		if (listProject != null) {
+			return listProject;
+		} else {
+			return null;
+		}
+	}
+
+	public List<Project> getCloseProjectUser(String username) {
+		List<Personal> list = new ArrayList<Personal>();
+		list = sessionFactory.getCurrentSession().createQuery("from Personal where username='"+username+"'").list();
+		int id_user = list.get(0).getId();
+		
+		java.util.Date date = new Date();
+		java.sql.Date sqlFinishDate = new java.sql.Date(date.getTime()); 
+		List<Project> listProject = new ArrayList<Project>();
+		listProject = sessionFactory.getCurrentSession().createQuery("from Project where finish_date<'" +
+				sqlFinishDate + "' and id_emp='" + id_user + "'").list();
+		if (listProject != null) {
+			return listProject;
+		} else {
+			return null;
+		}
+	}
+
 
 }

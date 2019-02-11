@@ -67,6 +67,11 @@ public class PersonalDaoImpl implements PersonalDao {
 		}
 		
 	}
+	public List<Personal> getPersonalByUsername(String username) {
+		List<Personal> list = new ArrayList<Personal>();
+		list = sessionFactory.getCurrentSession().createQuery("from Personal where username='"+username+"'").list();
+		return list;
+	}
 
 
 

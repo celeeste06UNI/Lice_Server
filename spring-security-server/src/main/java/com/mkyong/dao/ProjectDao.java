@@ -20,4 +20,8 @@ public interface ProjectDao {
 
 	public List<RuleProj> getProjectByRule(Integer id_rule);
 
+	public List<Project> getOpenProjectUser(String username);
+
+	public List<Project> getCloseProjectUser(String username);
+
 }

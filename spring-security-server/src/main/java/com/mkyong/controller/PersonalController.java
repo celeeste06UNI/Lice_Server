@@ -79,6 +79,14 @@ public class PersonalController {
 		return list;
 
 	}
+	
+	@RequestMapping(value = "/getPersonalByUsername", method = RequestMethod.GET, produces = "application/json")
+	public List<Personal> getPersonalByUsername(@RequestParam(value = "username") String username) {
+		List<Personal> list = new ArrayList<Personal>();
+		list = personalService.getPersonalByUsername(username);
+		return list;
+
+	}
 
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public void saveUser(@RequestParam(value = "username") String username,

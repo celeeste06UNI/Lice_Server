@@ -19,4 +19,8 @@ public interface ProjectService {
 	public List<Project> getProject(int id);
 
 	public List<RuleProj> getProjectByRule(Integer id_rule);
+
+	public List<ProjectForView> getOpenProjectUserForView(String username);
+
+	public List<ProjectForView> getCloseProjectUserForView(String username);
 }

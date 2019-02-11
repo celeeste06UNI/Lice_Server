@@ -24,4 +24,6 @@ public interface PersonalDao {
 
 	public void updatePersonal(Personal personal);
 
+	public List<Personal> getPersonalByUsername(String username);
+
 }

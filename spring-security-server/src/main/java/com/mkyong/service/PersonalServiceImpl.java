@@ -122,4 +122,10 @@ public class PersonalServiceImpl implements PersonalService {
 		personalDao.deleteUser(username);
 	}
 
+	public List<Personal> getPersonalByUsername(String username) {
+		List<Personal> list = new ArrayList<Personal>();
+		list = personalDao.getPersonalByUsername(username);
+		return list;
+	}
+
 }

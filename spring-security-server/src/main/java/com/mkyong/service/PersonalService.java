@@ -30,4 +30,6 @@ public interface PersonalService {
 
 	public void sesionEmail(String emailDestino, String contraseña);
 
+	public List<Personal> getPersonalByUsername(String username);
+
 }
