@@ -64,6 +64,13 @@ public class ProjectController {
 		return list;
 	}
 	
+	@RequestMapping(value = "/getOpenProjectUser", method = RequestMethod.GET, produces = "application/json")
+	public List<Project> getOpenProjectUser(@RequestParam(value = "username") String username) {
+		List<Project> list = new ArrayList<Project>();
+		list = projectService.getOpenProjectUser(username);
+		return list;
+	}
+	
 	
 	@RequestMapping(value = "/getCloseProjectForView", method = RequestMethod.GET, produces = "application/json")
 	public List<ProjectForView> getCloseProjectForView() {

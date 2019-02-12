@@ -172,5 +172,11 @@ public class ProjectServiceImpl implements ProjectService{
 		return listView;
 	}
 
+	public List<Project> getOpenProjectUser(String username) {
+		List<Project> list = new ArrayList<Project>();
+		list = projectDao.getOpenProjectUser(username);
+		return list;
+	}
+
 
 }
