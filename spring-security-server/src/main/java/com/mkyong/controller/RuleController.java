@@ -108,7 +108,6 @@ public class RuleController {
 
 	@RequestMapping(value = "/updateRule", method = RequestMethod.POST)
 	public void updateRule(@RequestParam(value = "id_rule") int id_rule,
-			@RequestParam(value = "id_project") int id_project,
 			@RequestParam(value = "operator") String operator, @RequestParam(value = "property") String property,
 			@RequestParam(value = "state") String state, @RequestParam(value = "criticity") String criticity,
 			@RequestParam(value = "priority") String priority, @RequestParam(value = "version") String version,
@@ -125,14 +124,15 @@ public class RuleController {
 		ruleService.updateRule(rule);
 		
 		
-		
+		/*
+		//Gualo->Esto lo comento Celeste para que funcione porque he quitado el id project del servicio web
 		if(id_catalogue==0) {
 			System.out.println("¿Quieres realmente eliminar la regla de todos los catalogos a los que esta asignada?");
 			//ruleService.deleteRuleProjCatalogue(id_rule, id_project, id_catalogueOld);
 		}else {
 			RuleProjCatalogue newRpc = new RuleProjCatalogue(id_rule, id_project, id_catalogue);
 			ruleService.updateRuleProjCatalogue(newRpc);
-		}
+		}*/
 	}
 	
 	@RequestMapping(value = "/getRulesByProject", method = RequestMethod.GET, produces = "application/json")
