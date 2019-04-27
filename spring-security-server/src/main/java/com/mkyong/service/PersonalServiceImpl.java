@@ -66,7 +66,7 @@ public class PersonalServiceImpl implements PersonalService {
 	}
 
 	public void sesionEmail(String emailDestino, String contraseña) {
-		final String fromEmail = "intime.uclm.esi@gmail.com"; // requires valid gmail id
+		final String fromEmail = "licedqtool@gmail.com"; // requires valid gmail id
 		final String password = "admin_1234"; // correct password for gmail id
 		final String toEmail = emailDestino; // can be any email id
 
@@ -85,7 +85,7 @@ public class PersonalServiceImpl implements PersonalService {
 			}
 		};
 		Session session = Session.getInstance(props, auth);
-
+		session.setDebug(true);
 		sendEmail(session, toEmail, "Contraseña LiceDQTool", "Su contraseña es:" + contraseña);
 
 	}
