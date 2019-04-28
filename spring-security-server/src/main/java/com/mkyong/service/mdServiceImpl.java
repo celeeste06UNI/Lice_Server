@@ -40,11 +40,7 @@ public class mdServiceImpl implements mdService{
 		DataModel dataModel = new DataModel(id_datamodel,database_name, version);
 		md.addDataModel(dataModel);
 		List<Integer> ids = md.getIdDataModel(database_name, version);
-		int id = ids.get(0);
-		//System.out.println("-----------"+version+ id);
-		
-		//md.getIdDataModel(database_name,version);
-		
+		int id = ids.get(0);		
 		datamodelList = r.recorrerJDOMyMostrar(doc, version, id);
 		for (int i=0; i < datamodelList.size();i++) {
 			descriptDataModel = datamodelList.get(i);

@@ -32,7 +32,7 @@ public class mdDaoImpl implements mdDao {
 	public List<Integer> getIdDataModel(String database_name, String version) {
 		List<Integer> versiones = new ArrayList<Integer>();
 		versiones = sessionFactory.getCurrentSession().createQuery
-				("select id_datamodel from DataModel where database_name='"+database_name
+				("select id_dm from DataModel where database_name='"+database_name
 						+ "' and version='" + version+"'").list();
 		if (versiones != null) {
 			return versiones;
