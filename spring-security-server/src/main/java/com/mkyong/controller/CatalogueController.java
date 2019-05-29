@@ -26,12 +26,11 @@ public class CatalogueController {
 	private CatalogueService catalogueService;
 
 	@RequestMapping(value = "/addCatalogue", method = RequestMethod.POST)
-	public ModelAndView addCatalogue(@RequestParam(value = "id_catalogue") int id_catalogue,
+	public void addCatalogue(@RequestParam(value = "id_catalogue") int id_catalogue,
 			@RequestParam(value = "name") String name, @RequestParam(value = "description") String description)
 			throws ServletException, IOException, Exception {
 		Catalogue catalogue = new Catalogue(id_catalogue, name, URLDecoder.decode(description));
 		catalogueService.addCatalogue(catalogue);
-		return new ModelAndView("redirect:/main");
 
 	}
 
@@ -83,13 +82,22 @@ public class CatalogueController {
 		return list;
 
 	}
-	
+
 	@RequestMapping(value = "/getCatalogues", method = RequestMethod.GET, produces = "application/json")
 	public List<Catalogue> getCatalogues(@RequestParam(value = "id_rule") Integer id_rule,
 			@RequestParam(value = "id_project") Integer id_project) {
 		List<Catalogue> list = new ArrayList<Catalogue>();
 		list = catalogueService.getCatalogues(id_rule, id_project);
 		return list;
+
+	}
+
+	@RequestMapping(value = "/deleteRuleProjCatalogue", method = RequestMethod.POST)
+	public void deleteRuleProjCatalogue(@RequestParam(value = "id_rule") Integer id_rule,
+			@RequestParam(value = "id_project") Integer id_project,
+			@RequestParam(value = "id_catalogue") Integer id_catalogue)
+			throws ServletException, IOException, Exception {
+		catalogueService.deleteRuleProjCatalogue(id_rule, id_project,id_catalogue);
 
 	}
 

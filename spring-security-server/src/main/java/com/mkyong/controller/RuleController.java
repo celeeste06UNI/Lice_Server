@@ -123,16 +123,6 @@ public class RuleController {
 		Rule rule = new Rule(id_rule,operator,property,state,criticity,priority,version);
 		ruleService.updateRule(rule);
 		
-		
-		/*
-		//Gualo->Esto lo comento Celeste para que funcione porque he quitado el id project del servicio web
-		if(id_catalogue==0) {
-			System.out.println("¿Quieres realmente eliminar la regla de todos los catalogos a los que esta asignada?");
-			//ruleService.deleteRuleProjCatalogue(id_rule, id_project, id_catalogueOld);
-		}else {
-			RuleProjCatalogue newRpc = new RuleProjCatalogue(id_rule, id_project, id_catalogue);
-			ruleService.updateRuleProjCatalogue(newRpc);
-		}*/
 	}
 	
 	@RequestMapping(value = "/getRulesByProject", method = RequestMethod.GET, produces = "application/json")

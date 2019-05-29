@@ -55,7 +55,7 @@ public class OrganizationController {
 
 	}
 	
-	@RequestMapping(value = "/	", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateOrganization", method = RequestMethod.POST)
 	public void updateOrganization(@RequestParam(value = "id") int id, @RequestParam(value = "cif") int cif,@RequestParam(value = "name_org") String name_org,
 			@RequestParam(value = "name_trade") String name_trade, @RequestParam(value = "name_contact") String name_contact,
 			@RequestParam(value = "role_contact") String role_contact, @RequestParam(value = "telephone_contact") String telephone_contact) throws ServletException, IOException, Exception {

@@ -63,5 +63,9 @@ public class CatalogueServiceImpl implements CatalogueService{
 		list=catalogueDao.getCatalogues(id_rule, id_project);
 		return list;
 	}
+	public void deleteRuleProjCatalogue(Integer id_rule, Integer id_project, Integer id_catalogue) {
+		
+		catalogueDao.deleteRuleProjCatalogue(id_rule,id_project,id_catalogue);
+	}
 
 }
