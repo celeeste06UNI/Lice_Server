@@ -102,4 +102,10 @@ public class CatalogueDaoImpl implements CatalogueDao {
 		}
 
 	}
+
+	public void addRuleProjCatalogue(Integer id_rule, Integer id_project, Integer id_catalogue) {
+		RuleProjCatalogue rpc = new RuleProjCatalogue(id_rule,id_project,id_catalogue);
+		sessionFactory.getCurrentSession().saveOrUpdate(rpc);
+		
+	}
 }

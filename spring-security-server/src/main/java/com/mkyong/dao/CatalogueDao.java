@@ -26,4 +26,6 @@ public interface CatalogueDao {
 
 	public void deleteRuleProjCatalogue(Integer id_rule, Integer id_project, Integer id_catalogue);
 
+	public void addRuleProjCatalogue(Integer id_rule, Integer id_project, Integer id_catalogue);
+
 }

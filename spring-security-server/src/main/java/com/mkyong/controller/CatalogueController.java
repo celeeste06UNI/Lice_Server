@@ -100,5 +100,14 @@ public class CatalogueController {
 		catalogueService.deleteRuleProjCatalogue(id_rule, id_project,id_catalogue);
 
 	}
+	
+	@RequestMapping(value = "/addRuleProjCatalogue", method = RequestMethod.POST)
+	public void addRuleProjCatalogue(@RequestParam(value = "id_rule") Integer id_rule,
+			@RequestParam(value = "id_project") Integer id_project,
+			@RequestParam(value = "id_catalogue") Integer id_catalogue)
+			throws ServletException, IOException, Exception {
+		catalogueService.addRuleProjCatalogue(id_rule, id_project,id_catalogue);
+
+	}
 
 }
